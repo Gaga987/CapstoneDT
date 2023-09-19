@@ -6,8 +6,6 @@ using UnityEngine;
 /// </summary>
 public class Triggers : MonoBehaviour
 {
-
- 
     /// <summary>
     ///  when trigger destroyed tell game manager
     /// </summary>
