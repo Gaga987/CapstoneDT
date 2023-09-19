@@ -2,28 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// tt : handles trigger related game events 
+/// tt : handles trigger related game events , observer pattern
 /// </summary>
 public class Triggers : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
     /// <summary>
-    ///  when trigger destroyed tell npc script 
+    ///  when trigger destroyed tell game manager
     /// </summary>
     /// <param name="collision"></param>
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameManager.NotifyCollision(collision); 
         Destroy(this.gameObject);
+        Debug.Log("Trigger destroyed"); 
     }
 }
