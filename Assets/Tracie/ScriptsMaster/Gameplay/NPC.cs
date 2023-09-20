@@ -14,7 +14,7 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
-        NPCFollowPlayer(); 
+    //testing purposes    NPCFollowPlayer(); 
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class NPC : MonoBehaviour
             // normalize 
             directionToPlayer.Normalize();
             // move npc towards player at x speed 
-            transform.Translate(Vector2.left * npcfollowSpeed * Time.deltaTime * directionToPlayer); 
+            transform.Translate(Vector2.right * npcfollowSpeed * Time.deltaTime * directionToPlayer); 
         }
         Debug.Log("Npc on the move"); 
     }
