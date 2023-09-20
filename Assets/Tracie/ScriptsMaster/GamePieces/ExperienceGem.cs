@@ -7,8 +7,8 @@ public class ExperienceGem : MonoBehaviour
     [Header("Gem Configurations")]
     [SerializeField] private float respawnTimeSeconds = 8;
     [SerializeField] private int experienceGained = 25;
-    private CircleCollider2D gemCircleCollider;
-    private SpriteRenderer gemVisual;
+    [SerializeField] private CircleCollider2D gemCircleCollider;
+    [SerializeField] private SpriteRenderer gemVisual;
 
     private void Awake()
     {
@@ -23,7 +23,8 @@ public class ExperienceGem : MonoBehaviour
         GameEventsMaster.instance.playerEvents.ExperienceGained(experienceGained);
         GameEventsMaster.instance.miscEvents.GemCollected();
         StopAllCoroutines();
-        StartCoroutine(RespawnAfterTimeGem()); 
+        StartCoroutine(RespawnAfterTimeGem());
+        Debug.Log("Gem collected"); 
     }
 
     private IEnumerator RespawnAfterTimeGem()

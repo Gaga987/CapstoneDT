@@ -8,7 +8,7 @@ public class GameEventsMaster : MonoBehaviour
 
     public InputEvents inputEvents;
     public PlayerEvents playerEvents;
-    public GoldEvents goldEvents;
+    public CoinEvents coinEvents;
     public MiscEvents miscEvents;
     public QuestEvents questEvents; 
     private void Awake()
@@ -19,7 +19,7 @@ public class GameEventsMaster : MonoBehaviour
         // initialize all events 
         inputEvents = new InputEvents();
         playerEvents = new PlayerEvents();
-        goldEvents = new GoldEvents();
+        coinEvents = new CoinEvents();
         miscEvents = new MiscEvents();
         questEvents = new QuestEvents();
 
