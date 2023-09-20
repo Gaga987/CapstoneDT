@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public interface  IInteract
 {
     public void GetInteractPressed();
-    public void GetSubmitPressed(); 
+    public void GetTalkPressed();
+    public void GetSubmitPressed();
 
 }
 

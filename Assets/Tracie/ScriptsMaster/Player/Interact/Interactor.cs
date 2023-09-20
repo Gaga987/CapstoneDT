@@ -23,19 +23,23 @@ public  class Interactor : MonoBehaviour, IInteract
     [Header("Interactor Configurations")]
     [SerializeField] private GameObject player;
     [SerializeField] private bool isInteractPressed;
+    [SerializeField] private bool isTalkPressed;
     [SerializeField] private bool isSubmitPressed; 
 
 
     private KeyCode interactKey = KeyCode.I;
     // not ideal, would prefer to reference on image click 
-    private KeyCode submitKey = KeyCode.S; 
+    private KeyCode talkKey = KeyCode.T;
+
+    private KeyCode submitKey = KeyCode.Return;
 
 
  
     private void Update()
     {
         GetInteractPressed();
-        GetSubmitPressed();
+        GetTalkPressed();
+        GetSubmitPressed(); 
     }
 /// <summary>
 /// THIS WORKS BUT SHOULD RETURN FALSE OTHERWISE INSTEAD OF GKU BECAUSE
@@ -51,6 +55,20 @@ public  class Interactor : MonoBehaviour, IInteract
         if(Input.GetKeyUp(interactKey))
         {
             isInteractPressed = false; 
+        }
+        // return?
+    }
+
+    public void GetTalkPressed()
+    {
+        if (Input.GetKeyDown(talkKey))
+        {
+            isTalkPressed = true;
+            Debug.Log("Talk engaged");
+        }
+        if (Input.GetKeyUp(talkKey))
+        {
+            isTalkPressed = false;
         }
         // return?
     }

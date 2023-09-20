@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
     // readonly
     public bool dialogueIsPlaying { get; private set; }
 
-    private KeyCode submitKey = KeyCode.S; 
+    private KeyCode talkKey = KeyCode.T; 
     private void Start()
     {
         dialogueIsPlaying = false;
@@ -67,7 +67,7 @@ public class DialogueManager : MonoBehaviour
         // handle continuing to the next line in the dialogue when submit is pressed 
        // exhibit b 
        //double check  prevents the story from continuing if there are choices 
-        if( currentStory.currentChoices.Count == 0 && Input.GetKeyDown(submitKey))
+        if( currentStory.currentChoices.Count == 0 && Input.GetKeyDown(talkKey))
         {
             ContinueStory(); 
         }
