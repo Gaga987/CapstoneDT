@@ -12,6 +12,11 @@ public class NPC : MonoBehaviour
     [SerializeField] private float npcstoppingDistance;
 
 
+    private void Update()
+    {
+        NPCFollowPlayer(); 
+    }
+
     /// <summary>
     ///  npc goes from static to players location and stops when they are x proximity from the player 
     /// </summary>
