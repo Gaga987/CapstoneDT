@@ -5,9 +5,25 @@ using UnityEngine;
 public class Combatant : MonoBehaviour
 {
     [Header("CombatantConfigurations")]
-    [SerializeField] private string combatantName;
-    [SerializeField] private int combatantLevel;
-    [SerializeField] private int damage;
-    [SerializeField] private int maxHP;
-    [SerializeField] private int currentHP; 
+   public string combatantName;
+   public int combatantLevel;
+   public  int damage;
+   public int maxHP;
+   public  int currentHP; 
+
+
+    public bool TakeDamage(int damage)
+    {
+        currentHP -= damage; 
+
+        // is dead?
+        if(currentHP <= 0)
+        {
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

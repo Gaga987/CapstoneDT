@@ -3471,7 +3471,7 @@ GameObject:
   - component: {fileID: 728035423}
   - component: {fileID: 728035422}
   m_Layer: 5
-  m_Name: TurnChoiceAttack
+  m_Name: TurnChoiceFight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3541,7 +3541,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 728035423}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1281761788}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: OnFightButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &728035423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,6 +3603,7 @@ GameObject:
   - component: {fileID: 743217165}
   - component: {fileID: 743217167}
   - component: {fileID: 743217166}
+  - component: {fileID: 743217168}
   m_Layer: 5
   m_Name: BossPanel
   m_TagString: Untagged
@@ -3659,6 +3672,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743217164}
   m_CullTransparentMesh: 1
+--- !u!114 &743217168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743217164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d34dad273fc5ce428905adcbbdc2f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 1049618543}
+  levelText: {fileID: 605244981}
+  hpSlider: {fileID: 1952956418}
 --- !u!1 &744610127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4850,7 +4878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name : Lemon, Sloth of Lime'
+  m_text: 'Name : Overpowered the PowerScaled'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -6106,6 +6134,9 @@ MonoBehaviour:
   bossPrefab: {fileID: 511514426460243430, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
   playerStation: {fileID: 438801547}
   bossStation: {fileID: 1495077567}
+  shitTalkinText: {fileID: 131504009}
+  playerPanel: {fileID: 1960979160}
+  bossPanel: {fileID: 743217168}
 --- !u!1 &1289400837
 GameObject:
   m_ObjectHideFlags: 0
@@ -8377,7 +8408,7 @@ GameObject:
   - component: {fileID: 1862536112}
   - component: {fileID: 1862536111}
   m_Layer: 5
-  m_Name: TurnChoiceHeal
+  m_Name: TurnChoiceRecover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8973,6 +9004,7 @@ GameObject:
   - component: {fileID: 1960979157}
   - component: {fileID: 1960979159}
   - component: {fileID: 1960979158}
+  - component: {fileID: 1960979160}
   m_Layer: 5
   m_Name: PlayerPanel
   m_TagString: Untagged
@@ -9041,6 +9073,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960979156}
   m_CullTransparentMesh: 1
+--- !u!114 &1960979160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960979156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d34dad273fc5ce428905adcbbdc2f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 1198052293}
+  levelText: {fileID: 712561923}
+  hpSlider: {fileID: 1935721794}
 --- !u!1 &1973228076
 GameObject:
   m_ObjectHideFlags: 0

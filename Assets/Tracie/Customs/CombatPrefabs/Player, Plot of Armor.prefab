@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f6b623043e3b84e9de717ab3bdfb36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatantName: Lemon, Sloth of Lime
+  combatantName: Player,Plot of Armor
   combatantLevel: 2
   damage: 5
   maxHP: 30
