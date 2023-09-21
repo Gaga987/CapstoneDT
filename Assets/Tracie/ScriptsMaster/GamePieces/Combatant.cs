@@ -9,7 +9,7 @@ public class Combatant : MonoBehaviour
    public int combatantLevel;
    public  int damage;
    public int maxHP;
-   public  int currentHP; 
+   public  int currentHP;
 
 
     public bool TakeDamage(int damage)

@@ -14,6 +14,7 @@ public class BattlePanel : MonoBehaviour
     [SerializeField] private Slider hpSlider; 
 
 
+
     public void SetBattleUI(Combatant combatant)
     {
         nameText.text = combatant.combatantName;
