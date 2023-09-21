@@ -2612,7 +2612,7 @@ GameObject:
   - component: {fileID: 605244982}
   - component: {fileID: 605244981}
   m_Layer: 5
-  m_Name: PlayerLevelText
+  m_Name: BossLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2658,7 +2658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Level : Novice '
+  m_text: 'Level : DIETY'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -3335,7 +3335,7 @@ GameObject:
   - component: {fileID: 712561924}
   - component: {fileID: 712561923}
   m_Layer: 5
-  m_Name: BossLevelText
+  m_Name: PlayerLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3381,7 +3381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Level : Enraged'
+  m_text: 'Level : Chosen'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -3592,7 +3592,7 @@ GameObject:
   - component: {fileID: 743217167}
   - component: {fileID: 743217166}
   m_Layer: 5
-  m_Name: PlayerPanel
+  m_Name: BossPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3790,7 +3790,7 @@ Transform:
   - {fileID: 1495077567}
   - {fileID: 418811507}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805697623
 GameObject:
@@ -4306,7 +4306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &948198609
 Transform:
   m_ObjectHideFlags: 0
@@ -4804,7 +4804,7 @@ GameObject:
   - component: {fileID: 1049618544}
   - component: {fileID: 1049618543}
   m_Layer: 5
-  m_Name: PlayerNameText
+  m_Name: BossNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4850,7 +4850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name : Player plot of armor'
+  m_text: 'Name : Lemon, Sloth of Lime'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -5170,7 +5170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1086366477
 MonoBehaviour:
@@ -5547,7 +5547,7 @@ GameObject:
   - component: {fileID: 1198052294}
   - component: {fileID: 1198052293}
   m_Layer: 5
-  m_Name: BossNameText
+  m_Name: PlayerNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5593,7 +5593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Name : Lemon , Sloth of Lime'
+  m_text: 'Name : Player, Plot of Armor'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -6057,6 +6057,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1281761786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281761787}
+  - component: {fileID: 1281761788}
+  m_Layer: 0
+  m_Name: BattleSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1281761787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281761786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1346491295}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1281761788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281761786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b28fc8dc0b7cab4cb053695664109c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  playerPrefab: {fileID: 2801640839611258662, guid: e25373b82c05af44bac59e18c93ca612, type: 3}
+  bossPrefab: {fileID: 511514426460243430, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+  playerStation: {fileID: 438801547}
+  bossStation: {fileID: 1495077567}
 --- !u!1 &1289400837
 GameObject:
   m_ObjectHideFlags: 0
@@ -6291,7 +6340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1346491295
 Transform:
   m_ObjectHideFlags: 0
@@ -6307,8 +6356,9 @@ Transform:
   - {fileID: 1515528597}
   - {fileID: 948198609}
   - {fileID: 1584706430}
+  - {fileID: 1281761787}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380845094
 GameObject:
@@ -6349,7 +6399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -503, y: 322}
+  m_AnchoredPosition: {x: -503.00003, y: 322}
   m_SizeDelta: {x: -732.71, y: -358.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380845096
@@ -6891,7 +6941,7 @@ GameObject:
   - component: {fileID: 1495077567}
   - component: {fileID: 1495077568}
   m_Layer: 0
-  m_Name: EnemyStation
+  m_Name: BossStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6980,7 +7030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1515528597
 Transform:
   m_ObjectHideFlags: 0
@@ -7112,7 +7162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1584706430
 Transform:
   m_ObjectHideFlags: 0
@@ -7724,7 +7774,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1722228744
 GameObject:
@@ -8703,7 +8753,7 @@ GameObject:
   - component: {fileID: 1935721793}
   - component: {fileID: 1935721794}
   m_Layer: 5
-  m_Name: BossHPSlider
+  m_Name: PlayerHPSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8832,7 +8882,7 @@ GameObject:
   - component: {fileID: 1952956417}
   - component: {fileID: 1952956418}
   m_Layer: 5
-  m_Name: PlayerHPSlider
+  m_Name: BossHPSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8924,7 +8974,7 @@ GameObject:
   - component: {fileID: 1960979159}
   - component: {fileID: 1960979158}
   m_Layer: 5
-  m_Name: BossPanel
+  m_Name: PlayerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9612,5 +9662,66 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3951062267711011059
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 511514426460243430, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_Name
+      value: LemonLime
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243430, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9542238
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 511514426460243431, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19872b014500a6242a76c1fd94ea3598, type: 3}
