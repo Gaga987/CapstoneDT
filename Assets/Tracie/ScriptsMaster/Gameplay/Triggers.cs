@@ -6,15 +6,22 @@ using UnityEngine;
 /// </summary>
 public class Triggers : MonoBehaviour
 {
+
+    
     /// <summary>
-    ///  when trigger destroyed tell game manager
+    ///  when trigger destroyed tell npc to follow player 
     /// </summary>
     /// <param name="collision"></param>
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        GameManager.NotifyCollision(collision); 
-        Destroy(this.gameObject);
-        Debug.Log("Trigger destroyed"); 
+        if (collider.CompareTag("Player"))
+            {
+            NPC.GetInstance().npcFollowing = true;
+            NPC.GetInstance().CallCoroutine();
+            Destroy(this.gameObject);
+            Debug.Log("Trigger destroyed");
+        }
+       
     }
 }

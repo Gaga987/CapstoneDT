@@ -11,16 +11,16 @@ public class CollectCoinsQuestStep : QuestStep
     private int coinsCollected = 0; 
     private int coinsToComplete = 5;
 
-    private void OnEnable()
-    {
-        GameEventsMaster.instance.miscEvents.onCoinCollected += CoinCollected; 
-    }
+    //private void OnEnable()
+    //{
+    //    GameEventsMaster.instance.miscEvents.onCoinCollected += CoinCollected; 
+    //}
 
 
-    private void OnDisable()
-    {
-        GameEventsMaster.instance.miscEvents.onCoinCollected -= CoinCollected; 
-    }
+    //private void OnDisable()
+    //{
+    //    GameEventsMaster.instance.miscEvents.onCoinCollected -= CoinCollected; 
+    //}
 
     private void CoinCollected()
     {
