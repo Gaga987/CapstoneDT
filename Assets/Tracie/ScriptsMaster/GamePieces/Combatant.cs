@@ -26,4 +26,20 @@ public class Combatant : MonoBehaviour
             return false;
         }
     }
-}
+
+
+    public void Recover(int healAmount)
+    {
+        // heald and cap if not 
+        currentHP += healAmount; 
+        if(currentHP > maxHP)
+        {
+            currentHP = maxHP; 
+        }
+    }
+
+    }
+
+
+
+

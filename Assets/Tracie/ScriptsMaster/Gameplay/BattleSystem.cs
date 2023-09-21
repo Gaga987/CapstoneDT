@@ -24,8 +24,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private Transform bossStation;
     [SerializeField] private TextMeshProUGUI shitTalkinText;
 
-    private float coroutineWaitTime = 4f; 
- 
+    private float coroutineWaitTime = 4f;
+    private int recoverAmount = 8;
+
     Combatant playerC; 
     Combatant bossC;
 
@@ -76,8 +77,9 @@ public class BattleSystem : MonoBehaviour
     {
         shitTalkinText.text = " Shall you pick up your sword? Cower in fear for self preservation?"; 
     }
+
     /// <summary>
-    /// 
+    ///  tt: handles fight selection
     /// </summary>
     public  void OnFightButton()
     {
@@ -87,8 +89,39 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttackBasic()); 
     }
 
+    public void OnRecoverButton()
+    {
+        if (state != BattleState.PlayerTurn)
+            return;
+
+        StartCoroutine(PlayerRecover()); 
+    }
+
+    private IEnumerator PlayerRecover()
+    {
+        playerC.Recover(recoverAmount);
+        playerPanel.TrackHP(playerC.currentHP);
+        //update ui 
+        shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
+
+        yield return new WaitForSeconds(coroutineWaitTime);
+
+        // next state 
+
+        state = BattleState.EnemyTurn;
+        StartCoroutine(EnemyTurn()); 
+    }
+    
 
 
+
+
+
+
+    /// <summary>
+    /// tt : handles attack
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PlayerAttackBasic()
     {
         // do basic damage 
