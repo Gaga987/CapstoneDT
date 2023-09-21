@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1279181361}
-  npcfollowSpeed: 10
+  npcfollowSpeed: 30
   npcstoppingDistance: 5
   npcFollowing: 0
 --- !u!1 &1012268570

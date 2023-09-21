@@ -69,4 +69,14 @@ public class PlayerController : MonoBehaviour
     //    }
     }
 
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("NPC"))
+        {
+            NPC.GetInstance().StopNPCCoroutine();
+            Debug.Log("npc no longer following player"); 
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class Triggers : MonoBehaviour
         if (collider.CompareTag("Player"))
             {
             NPC.GetInstance().npcFollowing = true;
-            NPC.GetInstance().CallCoroutine();
+            NPC.GetInstance().CallNPCCoroutine();
             Destroy(this.gameObject);
             Debug.Log("Trigger destroyed");
         }

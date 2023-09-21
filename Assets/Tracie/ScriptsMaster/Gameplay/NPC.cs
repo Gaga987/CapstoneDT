@@ -1,16 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-/// <summary>
-/// tt : handles npc functionalities 
-/// </summary>
+
 public class NPC : MonoBehaviour
 {
     private static NPC instance;
+
     private void Awake()
     {
-        if (instance != null && instance != this) { Destroy(this); return; }
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         instance = this;
     }
 
@@ -18,55 +19,47 @@ public class NPC : MonoBehaviour
     {
         return instance;
     }
-    [Header(" NPC Configurations")]
+
+    [Header("NPC Configurations")]
     [SerializeField] private Transform player;
     [SerializeField] private float npcfollowSpeed;
     [SerializeField] private float npcstoppingDistance;
     public bool npcFollowing = false;
 
-    private void Update()
+    private IEnumerator NPCFollowPlayer()
     {
-    //testing purposes    NPCFollowPlayer(); 
-    }
+        while (npcFollowing)
+        {
+            if (player == null)
+            {
+                yield break; // Exit the coroutine if the player is null
+            }
 
-    /// <summary>
-    ///  npc goes from static to players location and stops when they are x proximity from the player 
-    /// </summary>
-  private  IEnumerator NPCFollowPlayer()
-    {
-        //      if (player == null) { return; }
-        if(npcFollowing == true)
-        { 
-        // calc distance between npc and player 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-            Debug.Log(" distance to player working " + distanceToPlayer); 
-            // check if npc is outside of stopping distance 
+            // Calculate distance between NPC and player
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+            // Check if NPC is outside of stopping distance
             if (distanceToPlayer >= npcstoppingDistance)
             {
-           
-                //calc direction from npc to player 
+                // Calculate direction from NPC to player
                 Vector2 directionToPlayer = player.position - transform.position;
-                // normalize 
                 directionToPlayer.Normalize();
-                // move npc towards player at x speed 
-             //   transform.Translate(npcfollowSpeed * Time.deltaTime * directionToPlayer * Vector2.left);
-                Vector2.MoveTowards(transform.position, player.position, npcfollowSpeed * Time.deltaTime);
-                Debug.Log("Npc on the move");
+
+                // Move NPC towards player at the specified speed
+                transform.Translate(npcfollowSpeed * Time.deltaTime * directionToPlayer);
             }
-            if (distanceToPlayer < npcstoppingDistance)
-            {
-                npcFollowing = false;
-                StopAllCoroutines();
-            }
+
+            yield return new WaitForSeconds(0.1f);
         }
-       
-       yield return new WaitForSeconds(.1f); 
-  
     }
 
-    public void CallCoroutine()
+    public void CallNPCCoroutine()
     {
         StartCoroutine(NPCFollowPlayer());
     }
 
+    public void StopNPCCoroutine()
+    {
+        StopCoroutine(NPCFollowPlayer());   
+    }
 }
