@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using UnityEditor.ShaderGraph.Internal;
+
 public enum BattleState
 {
     Start, 
@@ -25,6 +27,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shitTalkinText;
 
     private float coroutineWaitTime = 4f;
+    private float preventPlayerAction = .1f; 
     private int recoverAmount = 8;
 
     Combatant playerC; 
@@ -104,7 +107,8 @@ public class BattleSystem : MonoBehaviour
         //update ui 
         shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
 
-        yield return new WaitForSeconds(coroutineWaitTime);
+        yield return new WaitForSeconds(preventPlayerAction);
+       
 
         // next state 
 
@@ -131,7 +135,8 @@ public class BattleSystem : MonoBehaviour
         bossPanel.TrackHP(bossC.currentHP);
         shitTalkinText.text = bossC.combatantName + " has been Felled! "  ; 
 
-        yield return new WaitForSeconds(coroutineWaitTime);
+        yield return new WaitForSeconds(preventPlayerAction);
+
 
         // has died? 
         if (isDead)
