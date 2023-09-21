@@ -957,7 +957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -276.39996, y: 179.7}
+  m_AnchoredPosition: {x: -276.40002, y: 179.7}
   m_SizeDelta: {x: -596.93, y: -400.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432483908
@@ -2236,6 +2236,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &961331959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961331960}
+  - component: {fileID: 961331962}
+  - component: {fileID: 961331961}
+  m_Layer: 0
+  m_Name: StopNPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &961331960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961331959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1279181361}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &961331961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961331959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9995d95c5b1bfad4cb033d268555ac09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &961331962
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961331959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.177203, y: 5.9771724, z: 1}
+  m_Center: {x: 1, y: 1.8977757, z: 0}
 --- !u!1 &969047274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1279181361}
   npcfollowSpeed: 30
-  npcstoppingDistance: 5
+  npcstoppingDistance: 2
   npcFollowing: 0
 --- !u!1 &1012268570
 GameObject:
@@ -2982,7 +3040,8 @@ Transform:
   m_LocalPosition: {x: -194.79, y: -1.35, z: -23.73388}
   m_LocalScale: {x: 0.2593804, y: 0.21277156, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 961331960}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

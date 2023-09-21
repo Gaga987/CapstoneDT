@@ -11,24 +11,25 @@ public class CollectCoinsQuestStep : QuestStep
     private int coinsCollected = 0; 
     private int coinsToComplete = 5;
 
-    //private void OnEnable()
-    //{
-    //    GameEventsMaster.instance.miscEvents.onCoinCollected += CoinCollected; 
-    //}
+    private void OnEnable()
+    {
+        GameEventsMaster.instance.miscEvents.onCoinCollected += CoinCollected;
+    }
 
 
-    //private void OnDisable()
-    //{
-    //    GameEventsMaster.instance.miscEvents.onCoinCollected -= CoinCollected; 
-    //}
+    private void OnDisable()
+    {
+        GameEventsMaster.instance.miscEvents.onCoinCollected -= CoinCollected;
+    }
 
     private void CoinCollected()
     {
         if(coinsCollected < coinsToComplete)
         {
             coinsCollected++;
-            //UpdateState(); 
+            UpdateState(); 
         }
+
         if(coinsCollected >= coinsToComplete)
         {
             FinishQuestStep(); 
@@ -37,8 +38,14 @@ public class CollectCoinsQuestStep : QuestStep
 
     private void UpdateState()
     {
-      
-   
+
+        string state = coinsCollected.ToString(); 
+        ChangeState(state);
+    }
+    protected override void SetQuestStepState(string state)
+    {
+        this.coinsCollected = System.Int32.Parse(state);
+        UpdateState(); 
     }
 
 }

@@ -18,7 +18,7 @@ public class QuestInfoSO : ScriptableObject
     public GameObject[] questStepPrefabs;
 
     [Header("Rewards")]
-    public int goldReward;
+    public int coinReward;
     public int experienceReward; 
 
     //in order to be unique to each quest , using the name of the scriptable object for the ID 

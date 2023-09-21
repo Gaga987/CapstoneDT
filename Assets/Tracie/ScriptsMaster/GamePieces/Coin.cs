@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
     private void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();
-        visual = GetComponent<SpriteRenderer>();
+        visual = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void CollectCoin()

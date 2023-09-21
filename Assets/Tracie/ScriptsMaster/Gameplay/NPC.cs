@@ -62,4 +62,17 @@ public class NPC : MonoBehaviour
     {
         StopCoroutine(NPCFollowPlayer());   
     }
+
+    /// <summary>
+    ///  not really working 
+    /// </summary>
+    /// <param name="collider"></param>
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.CompareTag("StopNPC"))
+        {
+            StopNPCCoroutine();
+            Debug.Log("npc no longer following player");
+        }
+    }
 }

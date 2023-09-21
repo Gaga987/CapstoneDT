@@ -43,7 +43,9 @@ public class DialogueTrigger : MonoBehaviour
             playerInRange= false;
         }
     }
-
+    /// <summary>
+    ///  error might spawn until STOPNPC implemented 
+    /// </summary>
     private void ShowVisualCue()
     {
         // does not allow player to interact and throw off dialogue loop after press, allowing only submit by extension
