@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 /// <summary>
-/// tt : 
+/// tt :  loads scenes 
 /// </summary>
 public class GameManager : MonoBehaviour
 { private static GameManager instance;
@@ -17,39 +18,42 @@ public class GameManager : MonoBehaviour
         return instance; 
     }
 
-    // [Header(" GameManager Configurations")]
-    //[SerializeField] private GameObject npcSelected;
+        /// <summary>
+        ///  ENTERS game for on button click from StartMenu
+        /// </summary>
+        public void EnterGame()
+    {
+        Debug.Log("Entering the game, the story begins.");
+        SceneManager.LoadScene("FreshStart"); 
+    }
+    /// <summary>
+    ///  RETURNS to StartMenu for exit game on button click during gameplay AND During Game Lost. 
+    /// </summary>
+    public void ExitGame()
+    {
+        Debug.Log("Returning to start menu"); 
+        SceneManager.LoadScene("StartMenu"); 
+    }
+    /// <summary>
+    ///  From  ONTRIGGERENTER from FreshStart
+    /// </summary>
+    public void EnterFirstBattleScene()
+    {
+        Debug.Log(" Round 1 - fight!");
+        SceneManager.LoadScene("SceneTwo");
+    }
+
+    public void EnterNextFight()
+    {
+        Debug.Log(" Round 2 - fight!");
+        SceneManager.LoadScene("SceneThree");
+    }
+    
+    public void EnterWinningMoment()
+    {
+        Debug.Log(" You've proven valorant and won");
+        SceneManager.LoadScene("AHappyEnding");
+    }
 
 
-    //// events 
-    //// event raised when collision occurs 
-    //public static event System.Action<Collision2D> OCEEvent; 
-    //// notify listeners about collision with this method , not accessed through singleton
-    //public static void NotifyCollision(Collision2D notifyCollision)
-    //{
-    //    OCEEvent?.Invoke(notifyCollision);
-    //}
-    //private void OnEnable()
-    //{
-    //    // subscribe to the collison event when GM enabled on awake 
-    //    OCEEvent += CallNPC;      
-    //}
-
-    /////// <summary>
-    ///////  need to check when to unsubscribe
-    /////// </summary>
-    ////private void OnDisbale()
-    ////{
-    ////    OCEEvent -= CallNPC;
-    ////}
-
-
-    ///// <summary>
-    /////  call npc to player 
-    ///// </summary>
-    //public void  CallNPC(Collision2D collison)
-    //{
-    //    // calls npcs movement script 
-    //    npcSelected.GetComponent<NPC>().NPCFollowPlayer(); 
-    //}
-}
+    }
