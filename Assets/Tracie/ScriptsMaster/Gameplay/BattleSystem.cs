@@ -44,11 +44,15 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.Start;
         StartCoroutine(InitializeBattle()); 
     }
+
+
+
     /// <summary>
     /// initializes battle and gets info on combatatants
     /// </summary>
     private IEnumerator InitializeBattle()
     {
+
         //player
        GameObject player =  Instantiate(playerPrefab, playerStation);
          playerC =     player.GetComponent<Combatant>(); 
@@ -108,6 +112,11 @@ public class BattleSystem : MonoBehaviour
 
     public void OnStrongAttackButton()
     {
+
+        if (state != BattleState.PlayerTurn)
+            return;
+
+        StartCoroutine(PlayerStrongAttack()); 
         // NEED : One shot audio for strong attack 
 
 
@@ -174,6 +183,41 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(EnemyTurn()); 
         }
     }
+
+
+
+    private IEnumerator  PlayerStrongAttack()
+    {
+        // do strong attack damage 
+        bool isDead = bossC.TakeStrongAttackDamage(playerC.strongAttackDamage); 
+
+            //update ui 
+        bossPanel.TrackHP(bossC.currentHP);
+        shitTalkinText.text = bossC.combatantName + " has been gravely wounded!";
+
+        // DRAGANA 
+        Debug.Log(" Dragana player deals STRONG ATTACK  damage animationsss");
+
+        yield return new WaitForSeconds(preventPlayerAction);
+
+        // has died? 
+        if (isDead)
+        {
+            // end battle through slaying boss 
+            state = BattleState.Won;
+            EndBattle();
+        }
+        else
+        {
+            //  if !isDead then  enemy turn 
+            state = BattleState.EnemyTurn;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+
+
+
 
 
     private IEnumerator EnemyTurn()

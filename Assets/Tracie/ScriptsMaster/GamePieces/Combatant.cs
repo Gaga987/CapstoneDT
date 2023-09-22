@@ -8,6 +8,7 @@ public class Combatant : MonoBehaviour
    public string combatantName;
    public int combatantLevel;
    public  int damage;
+    public int strongAttackDamage; 
    public int maxHP;
    public  int currentHP;
 
@@ -20,6 +21,22 @@ public class Combatant : MonoBehaviour
         if(currentHP <= 0)
         {
             return true; 
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    public bool TakeStrongAttackDamage( int strongAttackDamage)
+    {
+        currentHP -= strongAttackDamage;
+
+        // is dead?
+        if (currentHP <= 0)
+        {
+            return true;
         }
         else
         {

@@ -48,6 +48,7 @@ MonoBehaviour:
   combatantName: Player,Plot of Armor
   combatantLevel: 2
   damage: 5
+  strongAttackDamage: 10
   maxHP: 30
   currentHP: 30
 --- !u!212 &6639820757113817599
