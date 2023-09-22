@@ -61,6 +61,12 @@ public class BattleSystem : MonoBehaviour
         //initializes dialogue during battle - boss first 
         shitTalkinText.text = "BEHOLD " +  bossC.combatantName  + " IS UPON YOU";
 
+        // NEED: One shot audio for boss arrival // battle initalization 
+
+        // DRAGANA 
+        Debug.Log(" Dragana opening animationsss"); 
+
+
 
         // setup panels 
         playerPanel.SetBattleUI(playerC);
@@ -100,12 +106,23 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerRecover()); 
     }
 
+    public void OnStrongAttackButton()
+    {
+        // NEED : One shot audio for strong attack 
+
+
+        // DRAGANA 
+        Debug.Log(" Dragana  strong attack animationsss");
+    }
+
     private IEnumerator PlayerRecover()
     {
         playerC.Recover(recoverAmount);
         playerPanel.TrackHP(playerC.currentHP);
         //update ui 
         shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
+
+        //  NEED : Stylistic event 
 
         yield return new WaitForSeconds(preventPlayerAction);
        
@@ -133,7 +150,12 @@ public class BattleSystem : MonoBehaviour
       bool isDead =   bossC.TakeDamage(playerC.damage);
         //update ui 
         bossPanel.TrackHP(bossC.currentHP);
-        shitTalkinText.text = bossC.combatantName + " has been Felled! "  ; 
+        shitTalkinText.text = bossC.combatantName + " has been Felled! "  ;
+
+
+
+        // DRAGANA 
+        Debug.Log(" Dragana player deals damage animationsss");
 
         yield return new WaitForSeconds(preventPlayerAction);
 
@@ -160,8 +182,13 @@ public class BattleSystem : MonoBehaviour
 
         shitTalkinText.text = bossC.combatantName + " strikes with a rageful glory! ";
 
+        // DRAGANA 
+
+        Debug.Log(" Dragana enemy strikes  animationsss");
+
+
         // deal damage 
-     bool isDead =    playerC.TakeDamage(bossC.damage); 
+        bool isDead =    playerC.TakeDamage(bossC.damage); 
 
         // update ui
         playerPanel.TrackHP(playerC.currentHP); 
@@ -201,12 +228,21 @@ public class BattleSystem : MonoBehaviour
     {
         if(state == BattleState.Won)
         {
-            shitTalkinText.text = " You have excorsized this terrible scourge... "; 
+            shitTalkinText.text = " You have excorsized this terrible scourge... ";
+
+            Debug.Log(" win theatrics"); 
+
         }
         else if( state == BattleState.Lost)
             {
              // SHOW PANEL (SETACTIVE) WITH BUTTON CLICK OPTIONS 
-            shitTalkinText.text = " You have proven NO match for " + bossC.combatantName + " and have been pathetically deafeated. Will you seek vengeance? "; 
+            shitTalkinText.text = " You have proven NO match for " + bossC.combatantName + " and have been pathetically deafeated. Will you seek vengeance? ";
+
+
+            // DRAGANA 
+            Debug.Log(" Dragana end battle animations"); 
+
+
         }
     }
 
