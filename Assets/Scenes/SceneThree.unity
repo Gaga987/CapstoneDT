@@ -468,7 +468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -344.59998, y: 211}
+  m_AnchoredPosition: {x: -344.6, y: 211}
   m_SizeDelta: {x: -684.5931, y: -383.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &155941613
@@ -2335,7 +2335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -272.66003, y: -233.66304}
+  m_AnchoredPosition: {x: -272.66003, y: -233.66302}
   m_SizeDelta: {x: 334.51, y: 30.645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &951423179
@@ -4318,7 +4318,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: talkin my shit
+  m_text: What we talkin about?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
