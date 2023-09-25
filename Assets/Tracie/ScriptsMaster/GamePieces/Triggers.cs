@@ -7,8 +7,10 @@ using UnityEngine;
 public class Triggers : MonoBehaviour
 {
     [SerializeField] private NPC npcS;
-    [SerializeField] private NPC npcDouble; 
-    
+    [SerializeField] private NPC npcDouble;
+    [SerializeField] private NPC npcF;
+    [SerializeField] private NPC npcG;
+
     /// <summary>
     ///  when trigger destroyed tell npc to follow player 
     /// </summary>
@@ -19,9 +21,13 @@ public class Triggers : MonoBehaviour
         if (collider.CompareTag("Player"))
             {
             npcS.npcFollowing = true;
+            npcF.npcFollowing = true;
+            npcG.npcFollowing = true;
             npcDouble.npcFollowing = true; 
             npcS.CallNPCCoroutine();
             npcDouble.CallNPCCoroutine();   
+            npcF.CallNPCCoroutine();
+            npcG.CallNPCCoroutine(); 
             //NPC.GetInstance().npcFollowing = true;
             //NPC.GetInstance().CallNPCCoroutine();
             Destroy(this.gameObject);
