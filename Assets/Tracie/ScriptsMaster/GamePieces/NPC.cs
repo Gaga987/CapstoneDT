@@ -3,22 +3,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    private static NPC instance;
-
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        instance = this;
-    }
-
-    public static NPC GetInstance()
-    {
-        return instance;
-    }
+ 
 
     [Header("NPC Configurations")]
     [SerializeField] private Transform player;
