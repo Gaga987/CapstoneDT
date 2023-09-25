@@ -7,24 +7,23 @@ using System.Collections.Generic;
 public class SoundManager : MonoBehaviour
 {// enable enum selection ? 
     // retrieval functionality :
-    //        SoundManager.GetInstance().PlaySound(SoundClips.TimorousTheme);
-    private static SoundManager instance;
+         
+    //private static SoundManager instance;
     private void Awake()
     {
-        if (instance != null && instance != this) { Destroy(this); return; }
-        instance = this;
+        //if (instance != null && instance != this) { Destroy(this); return; }
+        //instance = this;
+        InitalizeSoundClips(); 
     }
-    public static SoundManager GetInstance()
-    {
-        return instance;
-    }
+    //public static SoundManager GetInstance()
+    //{
+    //    return instance;
+    //}
 
     [Header("Sound Configurations")]
-    [SerializeField] private int testnum; 
+public Dictionary<string, AudioClip> soundClips = new Dictionary<string, AudioClip>();
 
-  private Dictionary<string, AudioClip> soundClips = new Dictionary<string, AudioClip>();
-
-    private AudioSource soundSource; 
+    public  AudioSource soundSource; 
 
     private void Start()
     {

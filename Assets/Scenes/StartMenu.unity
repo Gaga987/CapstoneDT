@@ -284,51 +284,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &157518118
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 157518120}
-  - component: {fileID: 157518121}
-  m_Layer: 0
-  m_Name: UINavigation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &157518120
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157518118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.75026, y: 0.59722555, z: 211.96547}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &157518121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157518118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 343eb8b983492614a802e459d2984cc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlPanel: {fileID: 89625780}
 --- !u!1 &298132485
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +447,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &348851209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 348851211}
+  - component: {fileID: 348851210}
+  m_Layer: 0
+  m_Name: gm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &348851210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348851209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c5bef900c8fad41b6caaf4fed6342c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &348851211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348851209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &480652435
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +891,7 @@ GameObject:
   - component: {fileID: 701985437}
   - component: {fileID: 701985436}
   - component: {fileID: 701985435}
+  - component: {fileID: 701985438}
   m_Layer: 5
   m_Name: ExitControlsButton
   m_TagString: Untagged
@@ -964,7 +964,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 157518121}
+      - m_Target: {fileID: 701985438}
         m_TargetAssemblyTypeName: UINavigation, Assembly-CSharp
         m_MethodName: ExitControlPanel
         m_Mode: 1
@@ -1014,6 +1014,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701985433}
   m_CullTransparentMesh: 1
+--- !u!114 &701985438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701985433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343eb8b983492614a802e459d2984cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startGame: {fileID: 2107650701}
+  controlPanel: {fileID: 89625780}
 --- !u!1 &982257857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1119,7 @@ GameObject:
   - component: {fileID: 986946553}
   - component: {fileID: 986946552}
   - component: {fileID: 986946551}
+  - component: {fileID: 986946554}
   m_Layer: 5
   m_Name: ControlsButton
   m_TagString: Untagged
@@ -1177,7 +1192,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 157518121}
+      - m_Target: {fileID: 986946554}
         m_TargetAssemblyTypeName: UINavigation, Assembly-CSharp
         m_MethodName: ShowControlPanel
         m_Mode: 1
@@ -1227,6 +1242,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986946549}
   m_CullTransparentMesh: 1
+--- !u!114 &986946554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986946549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343eb8b983492614a802e459d2984cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startGame: {fileID: 2107650701}
+  controlPanel: {fileID: 89625780}
 --- !u!1 &1431501995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,7 +1938,7 @@ Transform:
   - {fileID: 104601783}
   - {fileID: 1632242609}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1974309446
 GameObject:
@@ -2277,6 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343eb8b983492614a802e459d2984cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startGame: {fileID: 2107650701}
   controlPanel: {fileID: 89625780}
 --- !u!1 &2126509441
 GameObject:
