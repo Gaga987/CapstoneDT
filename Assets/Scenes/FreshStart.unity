@@ -5199,6 +5199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c5bef900c8fad41b6caaf4fed6342c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoading: freshStart
 --- !u!1 &1486680090 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013617770644, guid: 722924ec8a0056f4a8fb443b2fb65ff9, type: 3}
@@ -5767,7 +5768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1665987989
 Transform:
   m_ObjectHideFlags: 0
@@ -8036,7 +8037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1551613177042709101, guid: 4c692177b2f722e44a5dcfe9f7eb207a, type: 3}
       propertyPath: m_Name
-      value: npcCsprite
+      value: npcCspriteQuestGiverNull
       objectReference: {fileID: 0}
     - target: {fileID: 1551613177680833741, guid: 4c692177b2f722e44a5dcfe9f7eb207a, type: 3}
       propertyPath: m_SortingOrder

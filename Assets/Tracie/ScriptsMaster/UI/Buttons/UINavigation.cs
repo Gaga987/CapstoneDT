@@ -5,6 +5,8 @@ using UnityEngine;
 public class UINavigation : MonoBehaviour
 {
    public GameObject controlPanel;
+
+
     private void Awake()
     {
         controlPanel.SetActive(false);
@@ -12,7 +14,7 @@ public class UINavigation : MonoBehaviour
 
     public void OnClickSG()
     {
-        GameManager.GetInstance().EnterGame();
+        GameManager.GetInstance().EnterGame("FreshStart");
     }
 
     public void ShowControlPanel()

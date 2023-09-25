@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
     {
         return instance; 
     }
-
+    public string sceneLoading; 
         /// <summary>
         ///  ENTERS game for on button click from StartMenu
         /// </summary>
-        public void EnterGame()
+        public void EnterGame(string freshStart)
     {
         Debug.Log("Entering the game, the story begins.");
-        SceneManager.LoadScene("FreshStart"); 
+        SceneManager.LoadScene(freshStart); 
     }
     /// <summary>
     ///  RETURNS to StartMenu for exit game on button click during gameplay AND During Game Lost. 
