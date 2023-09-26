@@ -9,6 +9,7 @@ TagManager:
   - StopNPC
   - BOTTOMCOLLIDER
   - Boss
+  - RIGHTCOLLIDER
   layers:
   - Default
   - TransparentFX

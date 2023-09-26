@@ -12,14 +12,14 @@ public class Combatant : MonoBehaviour
     public int strongAttackDamage; 
    public int maxHP;
    public  int currentHP;
-    //public TextMeshProUGUI intText;
+    
 
 
     public bool TakeDamage(int damage)
     {
        
         currentHP -= damage;
-       // intText.text = damage.ToString();
+       
         // is dead?
         if (currentHP <= 0)
         {

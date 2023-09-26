@@ -4,18 +4,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEditor.ShaderGraph.Internal;
 
+/// <summary>
+/// tt: enum to hold battle state 
+/// </summary>
 public enum BattleState
 {
     Start, 
+    Waiting, 
     PlayerTurn, 
     EnemyTurn, 
     Won, 
     Lost
 }
 
-
+/// <summary>
+/// tt: battle system
+/// </summary>
 public class BattleSystem : MonoBehaviour
 {
     [Header("Battle System Configurations")]
@@ -29,7 +34,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bossintText;
 
     private float coroutineWaitTime = 6f;
-    private float preventPlayerAction = 6f; 
+    private float preventPlayerAction = 6f;
+    private float inbetweenWaiting = 10f; 
     private int recoverAmount = 8;
 
     Combatant playerC; 
@@ -50,7 +56,7 @@ public class BattleSystem : MonoBehaviour
 
 
     /// <summary>
-    /// initializes battle and gets info on combatatants
+    ///tt:  initializes battle and gets info on combatatants
     /// </summary>
     private IEnumerator InitializeBattle()
     {
@@ -87,14 +93,17 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// tt: handles player turn ui 
+    /// </summary>
     private void PlayerTurn()
     {
         shitTalkinText.text = " The decision is yours! Choose your next tactic."; 
     }
 
+
     /// <summary>
-    ///  tt: handles fight selection
+    ///  tt: handles simple attack selection
     /// </summary>
     public  void OnFightButton()
     {
@@ -104,6 +113,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerAttackBasic()); 
     }
 
+    /// <summary>
+    /// tt: handles recover hp 
+    /// </summary>
     public void OnRecoverButton()
     {
         if (state != BattleState.PlayerTurn)
@@ -112,6 +124,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerRecover()); 
     }
 
+    /// <summary>
+    ///  tt: handles strong attack 
+    /// </summary>
     public void OnStrongAttackButton()
     {
 
@@ -126,6 +141,11 @@ public class BattleSystem : MonoBehaviour
         Debug.Log(" Dragana  strong attack animationsss");
     }
 
+
+    /// <summary>
+    ///  tt : handles hp and hp 2 text 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PlayerRecover()
     {
         playerC.Recover(recoverAmount);
@@ -162,6 +182,7 @@ public class BattleSystem : MonoBehaviour
 
       bool isDead =   bossC.TakeDamage(playerC.damage);
         bossPanel.TrackHP(bossC.currentHP);
+       
         //update ui 
         bossintText.text = bossC.currentHP.ToString(); 
         shitTalkinText.text = bossC.combatantName + " has been Felled! "  ;
@@ -190,7 +211,10 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// tt: strong attack handle 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator  PlayerStrongAttack()
     {
         // do strong attack damage 
@@ -222,9 +246,10 @@ public class BattleSystem : MonoBehaviour
 
 
 
-
-
-
+    /// <summary>
+    ///  GET HELP - BOSS 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator EnemyTurn()
     {
         // INCREASE  BUFF BASED ON BOSS IN PREFABS 
@@ -255,39 +280,34 @@ public class BattleSystem : MonoBehaviour
         else
         {
             state = BattleState.PlayerTurn;
-            PlayerTurn(); 
-
+          
+            PlayerTurn();
+     
         }
-
 
     }
 
 
 
-
-
-
-
-
-
-
-
-
     /// <summary>
-    ///  CHANGE SCENE FROM GM HERE!!!!! 
+    /// tt: handles scene load dependent on outcome condition
     /// </summary>
     private void EndBattle()
     {
-        if(state == BattleState.Won)
+       
+        if (state == BattleState.Won)
         {
             shitTalkinText.text = " You have excorsized this terrible scourge... ";
-            GameManager.GetInstance().EnterWinningMoment(); 
-            Debug.Log(" win theatrics"); 
+            Debug.Log(" win ");
+      //      StartCoroutine(Wait());
+            GameManager.GetInstance().EnterWinningMoment();
+       //     StopCoroutine(Wait()); 
 
         }
         else if( state == BattleState.Lost)
             {
             shitTalkinText.text = " You have proven NO match for " + bossC.combatantName;
+            Debug.Log(" lose");
             GameManager.GetInstance().LosingLost();
 
             // DRAGANA 
@@ -296,6 +316,12 @@ public class BattleSystem : MonoBehaviour
     }
 
 
+
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(inbetweenWaiting);
+    }
 
 
 }
