@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class UINavigation : MonoBehaviour
 {
+    [Header("StartMenuUI Configurations")]
     [SerializeField] private Button startGame; 
-   public GameObject controlPanel;
+   [SerializeField]   private GameObject controlPanel;
 
 
     private void Awake()
