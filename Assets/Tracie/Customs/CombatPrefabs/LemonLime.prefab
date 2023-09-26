@@ -51,6 +51,7 @@ MonoBehaviour:
   strongAttackDamage: 40
   maxHP: 100
   currentHP: 100
+  intText: {fileID: 0}
 --- !u!212 &9069492199828216639
 SpriteRenderer:
   m_ObjectHideFlags: 0

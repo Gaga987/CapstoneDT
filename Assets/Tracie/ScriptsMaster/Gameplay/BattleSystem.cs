@@ -25,9 +25,11 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private Transform playerStation;
     [SerializeField] private Transform bossStation;
     [SerializeField] private TextMeshProUGUI shitTalkinText;
+   [SerializeField] private  TextMeshProUGUI playerintText;
+    [SerializeField] private TextMeshProUGUI bossintText;
 
     private float coroutineWaitTime = 6f;
-    private float preventPlayerAction = 4f; 
+    private float preventPlayerAction = 6f; 
     private int recoverAmount = 8;
 
     Combatant playerC; 
@@ -88,7 +90,7 @@ public class BattleSystem : MonoBehaviour
 
     private void PlayerTurn()
     {
-        shitTalkinText.text = " Shall you pick up your sword? Cower in fear for self preservation?"; 
+        shitTalkinText.text = " The decision is yours! Choose your next tactic."; 
     }
 
     /// <summary>
@@ -128,7 +130,9 @@ public class BattleSystem : MonoBehaviour
     {
         playerC.Recover(recoverAmount);
         playerPanel.TrackHP(playerC.currentHP);
+
         //update ui 
+        playerintText.text = playerC.currentHP.ToString();
         shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
 
         //  NEED : Stylistic event 
@@ -157,8 +161,9 @@ public class BattleSystem : MonoBehaviour
         // do basic damage 
 
       bool isDead =   bossC.TakeDamage(playerC.damage);
-        //update ui 
         bossPanel.TrackHP(bossC.currentHP);
+        //update ui 
+        bossintText.text = bossC.currentHP.ToString(); 
         shitTalkinText.text = bossC.combatantName + " has been Felled! "  ;
 
 
@@ -190,9 +195,9 @@ public class BattleSystem : MonoBehaviour
     {
         // do strong attack damage 
         bool isDead = bossC.TakeStrongAttackDamage(playerC.strongAttackDamage); 
-
-            //update ui 
-        bossPanel.TrackHP(bossC.currentHP);
+         bossPanel.TrackHP(bossC.currentHP);
+        // update ui 
+        bossintText.text = bossC.currentHP.ToString(); 
         shitTalkinText.text = bossC.combatantName + " has been gravely wounded!";
 
         // DRAGANA 
@@ -233,16 +238,19 @@ public class BattleSystem : MonoBehaviour
 
         // deal damage 
         bool isDead =    playerC.TakeDamage(bossC.damage); 
+       
 
         // update ui
-        playerPanel.TrackHP(playerC.currentHP); 
+        playerPanel.TrackHP(playerC.currentHP);
+        playerintText.text = playerC.currentHP.ToString(); 
 
         yield return new WaitForSeconds(coroutineWaitTime);
 
         if(isDead)
         {
             state = BattleState.Lost;
-            EndBattle(); 
+            EndBattle();
+            
         }
         else
         {
@@ -273,20 +281,17 @@ public class BattleSystem : MonoBehaviour
         if(state == BattleState.Won)
         {
             shitTalkinText.text = " You have excorsized this terrible scourge... ";
-
+            GameManager.GetInstance().EnterWinningMoment(); 
             Debug.Log(" win theatrics"); 
 
         }
         else if( state == BattleState.Lost)
             {
-             // SHOW PANEL (SETACTIVE) WITH BUTTON CLICK OPTIONS 
-            shitTalkinText.text = " You have proven NO match for " + bossC.combatantName + " and have been pathetically deafeated. Will you seek vengeance? ";
-
+            shitTalkinText.text = " You have proven NO match for " + bossC.combatantName;
+            GameManager.GetInstance().LosingLost();
 
             // DRAGANA 
             Debug.Log(" Dragana end battle animations"); 
-
-
         }
     }
 

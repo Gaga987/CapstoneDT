@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Combatant : MonoBehaviour
@@ -11,14 +12,16 @@ public class Combatant : MonoBehaviour
     public int strongAttackDamage; 
    public int maxHP;
    public  int currentHP;
+    //public TextMeshProUGUI intText;
 
 
     public bool TakeDamage(int damage)
     {
-        currentHP -= damage; 
-
+       
+        currentHP -= damage;
+       // intText.text = damage.ToString();
         // is dead?
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             return true; 
         }
@@ -31,8 +34,9 @@ public class Combatant : MonoBehaviour
 
     public bool TakeStrongAttackDamage( int strongAttackDamage)
     {
+       
         currentHP -= strongAttackDamage;
-
+     //   intText.text = strongAttackDamage.ToString();
         // is dead?
         if (currentHP <= 0)
         {
@@ -49,6 +53,7 @@ public class Combatant : MonoBehaviour
     {
         // heald and cap if not 
         currentHP += healAmount; 
+     //   intText.text = healAmount.ToString();
         if(currentHP > maxHP)
         {
             currentHP = maxHP; 

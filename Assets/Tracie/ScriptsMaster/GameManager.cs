@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("You've proven valorant and won");
     }
 
+    public void LosingLost()
+    {
+        SceneManager.LoadScene(SceneCollection.Loser.ToString()); 
+    }
+
     public void LoadScene( Scene scene)
     {
         SceneManager.LoadScene(scene.ToString());
