@@ -19,40 +19,14 @@ public class GameManager : MonoBehaviour
         return instance; 
     }
 
-
-    ///// <summary>
-    /////  RETURNS to StartMenu for exit game on button click during gameplay AND During Game Lost. 
-    ///// </summary>
-    //public void ExitGame()
-    //{
-    //    Debug.Log("Returning to start menu"); 
-    //    SceneManager.LoadScene("StartMenu"); 
-    //}
-    ///// <summary>
-    /////  From  ONTRIGGERENTER from FreshStart
-    ///// </summary>
-    //public void EnterFirstBattleScene()
-    //{
-    //    Debug.Log(" Round 1 - fight!");
-    //    SceneManager.LoadScene("SceneTwo");
-    //}
-
-    //public void EnterNextFight()
-    //{
-    //    Debug.Log(" Round 2 - fight!");
-    //    SceneManager.LoadScene("SceneThree");
-    //}
-    
-    //public void EnterWinningMoment()
-    //{
-    //    Debug.Log(" You've proven valorant and won");
-    //    SceneManager.LoadScene("AHappyEnding");
-    //}
-
-    public void LoadScene( Scene scene)
+    /// <summary>
+    ///  Loads StartMenu from any onclick
+    /// </summary>
+    public void LoadStartMenu()
     {
-        SceneManager.LoadScene(scene.ToString());
+        SceneManager.LoadScene(SceneCollection.StartMenu.ToString());
     }
+
     /// <summary>
     ///  on click - loads quest begins FROM  StartMenu 
     /// </summary>
@@ -62,22 +36,42 @@ public class GameManager : MonoBehaviour
         Debug.Log("Entering the game, the story begins.");
     }
 
-    /// <summary>
-    ///  Loads StartMenu from any onclick
-    /// </summary>
-    public void LoadStartMenu()
+
+    //public void EnterNextFight()
+    //{
+    //    Debug.Log(" Round 2 - fight!");
+    //    SceneManager.LoadScene("SceneThree");
+    //}
+
+    public void EnterWinningMoment()
     {
-        SceneManager.LoadScene(SceneCollection.StartMenu.ToString());
+        SceneManager.LoadScene(SceneCollection.AHappyEnding.ToString());
+        Debug.Log("You've proven valorant and won");
     }
+
+    public void LoadScene( Scene scene)
+    {
+        SceneManager.LoadScene(scene.ToString());
+    }
+
+
+
+
 
 
 
     /// <summary>
     ///  loads fight sequence from OTE in QuestBegins 
     /// </summary>
-    public void LoadFight()
+    public void LoadFightA()
     {
         SceneManager.LoadScene(SceneCollection.FightA.ToString());
+    }
+
+
+    public void LoadFightB()
+    {
+        SceneManager.LoadScene(SceneCollection.FightB.ToString());  
     }
 
 
@@ -100,5 +94,6 @@ public enum SceneCollection
     QuestBegins,  //1
     FightA,   //2
     FightB,  //3
-    AHappyEnding //4 
+    AHappyEnding,  //4 
+    Loser  //5 
 }
