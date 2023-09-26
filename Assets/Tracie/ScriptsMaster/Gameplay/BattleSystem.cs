@@ -27,7 +27,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shitTalkinText;
 
     private float coroutineWaitTime = 6f;
-    private float preventPlayerAction = 1f; 
+    private float preventPlayerAction = 4f; 
     private int recoverAmount = 8;
 
     Combatant playerC; 
