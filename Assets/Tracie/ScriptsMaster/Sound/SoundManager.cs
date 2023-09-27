@@ -5,72 +5,51 @@ using System.Collections.Generic;
 
 
 public class SoundManager : MonoBehaviour
-{// enable enum selection ? 
-    // retrieval functionality :
-         
-    //private static SoundManager instance;
+{
+    private static SoundManager instance;
     private void Awake()
     {
-        //if (instance != null && instance != this) { Destroy(this); return; }
-        //instance = this;
-        InitalizeSoundClips(); 
+        if (instance != null && instance != this) { Destroy(this); return; }
+        instance = this;
+
     }
-    //public static SoundManager GetInstance()
-    //{
-    //    return instance;
-    //}
+    public static SoundManager GetInstance()
+    { return instance;  }
 
     [Header("Sound Configurations")]
-public Dictionary<string, AudioClip> soundClips = new Dictionary<string, AudioClip>();
+    [SerializeField] private AudioSource songSource;
+    [SerializeField] private AudioSource oneshotSource;
 
-    public  AudioSource soundSource; 
+    [Header("Sound Collection")]
+    public AudioClip intro; 
+    public AudioClip backgroundAdventuring;
+    public AudioClip fight; 
+    public AudioClip happyEnding;
+    public AudioClip gameOver; 
+    public AudioClip onplayerLose;
+    public AudioClip onplayerDamage; 
+    public AudioClip onplayerAttack;
+    public AudioClip onplayerStrongAttack; 
+    public AudioClip onplayerRecover;
+    public AudioClip onEnemyAttack;
+    public AudioClip spearOfDivination; 
 
     private void Start()
     {
-        soundSource = gameObject.GetComponent<AudioSource>();
+        songSource.clip = intro;
+        songSource.Play();
     }
 
-    private void InitalizeSoundClips()
+
+    public void PlayOneShot(AudioClip clip)
     {
-        foreach (SoundClips soundclipEnum in Enum.GetValues(typeof(SoundClips)))
-        {
-            string clipName = soundclipEnum.ToString(); 
-            AudioClip clip = Resources.Load<AudioClip>("TimorousTheme" + clipName);
-            if( clip != null)
-            {
-                soundClips.Add(clipName, clip);
-            }
-            else
-            {
-                Debug.Log("Failed to load sound" + clipName); 
-            }
-        }
+        oneshotSource.PlayOneShot(clip); 
     }
-       
-    public void PlaySound(SoundClips soundClipEnum)
-    {
-        string clipName = soundClipEnum.ToString();
-        {
-            if(soundClips.ContainsKey(clipName))
-                {
-                soundSource.PlayOneShot(soundClips[clipName]);
-            }
-        }
-    }
+
+
+
 
 }
-public enum SoundClips
-{
-    TimorousTheme, 
-    BrazenTheme, 
-    JourneyTheme, 
-    ChoiceOneShot, 
-    EndOneShot, 
-
-}
-
-
-
 
 
 
