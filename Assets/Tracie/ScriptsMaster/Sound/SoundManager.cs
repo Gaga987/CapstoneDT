@@ -6,15 +6,6 @@ using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour
 {
-    private static SoundManager instance;
-    private void Awake()
-    {
-        if (instance != null && instance != this) { Destroy(this); return; }
-        instance = this;
-
-    }
-    public static SoundManager GetInstance()
-    { return instance;  }
 
     [Header("Sound Configurations")]
     [SerializeField] private AudioSource songSource;
@@ -26,20 +17,27 @@ public class SoundManager : MonoBehaviour
     public AudioClip fight; 
     public AudioClip happyEnding;
     public AudioClip gameOver; 
-    public AudioClip onplayerLose;
-    public AudioClip onplayerDamage; 
-    public AudioClip onplayerAttack;
-    public AudioClip onplayerStrongAttack; 
-    public AudioClip onplayerRecover;
-    public AudioClip onEnemyAttack;
-    public AudioClip spearOfDivination; 
+    //public AudioClip onplayerLose;
+    //public AudioClip onplayerDamage; 
+    //public AudioClip onplayerAttack;
+    //public AudioClip onplayerStrongAttack; 
+    //public AudioClip onplayerRecover;
+    //public AudioClip onEnemyAttack;
+    public AudioClip spearOfDivination;
 
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject); 
+    }
     private void Start()
     {
         songSource.clip = intro;
         songSource.Play();
     }
 
+
+    
 
     public void PlayOneShot(AudioClip clip)
     {
