@@ -44,11 +44,11 @@ public class BattleSystem : MonoBehaviour
     public BattlePanel playerPanel; 
     public BattlePanel bossPanel;
 
-    SoundManager soundManager;
+    //SoundManager soundManager;
 
     private void Awake()
     {
-        soundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();  
+      //  soundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();  
     }
 
 
@@ -60,7 +60,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.Start;
         StartCoroutine(InitializeBattle());
         // set battle music 
-        soundManager.PlayOneShot(soundManager.fight); 
+        //soundManager.PlayOneShot(soundManager.fight); 
     }
 
 
