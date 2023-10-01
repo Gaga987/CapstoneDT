@@ -12,8 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private bool isFacingRight = false;
     [SerializeField] private float jumpPower = 4f;
-    [SerializeField] private bool isJumping = false; 
+    [SerializeField] private bool isJumping = false;
 
+    public Animator animator;
+    private float horizontalMove;
 
     void Start()
     {
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         FlipSprite();
         Jump();
      
@@ -36,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isJumping = false; 
+    }
+    public void OnLanding()
+    {
+        animator.SetBool("isJumping", false);
     }
     /// <summary>
     ///  checks our bool to our horizontal input to flip based on whichever direction 
@@ -57,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
             isJumping = true;
+            animator.SetBool("isJumping", true);
+           
         }
     }
     /// <summary>
