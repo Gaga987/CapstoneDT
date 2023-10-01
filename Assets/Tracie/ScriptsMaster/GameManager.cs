@@ -37,12 +37,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //public void EnterNextFight()
-    //{
-    //    Debug.Log(" Round 2 - fight!");
-    //    SceneManager.LoadScene("SceneThree");
-    //}
-
     public void EnterWinningMoment()
     {
         SceneManager.LoadScene(SceneCollection.AHappyEnding.ToString());

@@ -11,6 +11,8 @@ TagManager:
   - Boss
   - RIGHTCOLLIDER
   - Sound
+  - FIGHTA
+  - FIGHTB
   layers:
   - Default
   - TransparentFX

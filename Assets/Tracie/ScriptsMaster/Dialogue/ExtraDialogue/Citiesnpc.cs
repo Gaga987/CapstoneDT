@@ -23,24 +23,28 @@ public class Citiesnpc : MonoBehaviour
 
     public void SwitchCity()
     {
-        string cityName = ((Ink.Runtime.StringValue)DialogueManager.GetInstance().GetVariableState("city_name")).value;
+        string cityName = ((Ink.Runtime.StringValue) DialogueManager.GetInstance().GetVariableState("city_name")).value;
 
         // change of color of npc trigger cue based on which ink var is selected 
 
         switch (cityName)
         {
-            case " ":
+            case "  ":
                 spriteRenderer.color = defaultColor;
                 break;
+
             case "Berlin":
                 spriteRenderer.color = berlinColor;
                 break;
+
             case "Amsterdam":
                 spriteRenderer.color = amsterdamColor;
                 break;
+
             case "Tokyo":
                 spriteRenderer.color = tokyoColor;
                 break;
+
             default:
                 Debug.Log("City name not handled by switch statement: " + cityName);
                 break;

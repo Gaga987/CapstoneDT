@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatantName: Player,Plot of Armor
   combatantLevel: 2
-  damage: 15
-  strongAttackDamage: 30
+  damage: 80
+  strongAttackDamage: 80
   maxHP: 80
   currentHP: 80
 --- !u!212 &6639820757113817599

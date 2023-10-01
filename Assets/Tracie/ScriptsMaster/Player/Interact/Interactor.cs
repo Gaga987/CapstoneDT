@@ -22,9 +22,9 @@ public  class Interactor : MonoBehaviour, IInteract
     }
     [Header("Interactor Configurations")]
     [SerializeField] private GameObject player;
-    [SerializeField] private bool isInteractPressed;
-    [SerializeField] private bool isTalkPressed;
-    [SerializeField] private bool isSubmitPressed; 
+      public bool  isInteractPressed;
+      public bool  isTalkPressed;
+    public bool isSubmitPressed; 
 
 
     private KeyCode interactKey = KeyCode.I;

@@ -47,11 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatantName: Lemon, Sloth of Lime
   combatantLevel: 4
-  damage: 20
-  strongAttackDamage: 40
+  damage: 16
+  strongAttackDamage: 80
   maxHP: 100
   currentHP: 100
-  intText: {fileID: 0}
 --- !u!212 &9069492199828216639
 SpriteRenderer:
   m_ObjectHideFlags: 0
