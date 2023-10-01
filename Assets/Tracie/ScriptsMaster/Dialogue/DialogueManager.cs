@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText; 
     private Story currentStory;
-    private float waitFor = 0.2f;
+    private float waitFor = .2f;
 
     private DialogueVariables dialogueVariables; 
     // readonly
@@ -65,9 +65,9 @@ public class DialogueManager : MonoBehaviour
             return; 
         }
         // handle continuing to the next line in the dialogue when submit is pressed 
-       // exhibit b 
-       //double check  prevents the story from continuing if there are choices 
-        if( currentStory.currentChoices.Count == 0 && Interactor.GetInstance().isTalkPressed)
+        // exhibit b 
+        //double check  prevents the story from continuing if there are choices 
+        if (currentStory.currentChoices.Count == 0 && Input.GetKeyDown(KeyCode.T))
         {
             ContinueStory(); 
         }

@@ -33,13 +33,14 @@ public  class Interactor : MonoBehaviour, IInteract
 
     private KeyCode submitKey = KeyCode.Return;
 
+    
 
  
     private void Update()
     {
         GetInteractPressed();
         GetTalkPressed();
-        GetSubmitPressed(); 
+        GetSubmitPressed();
     }
 /// <summary>
 /// THIS WORKS BUT SHOULD RETURN FALSE OTHERWISE INSTEAD OF GKU BECAUSE
@@ -47,6 +48,7 @@ public  class Interactor : MonoBehaviour, IInteract
 /// </summary>
     public void GetInteractPressed()
     {
+        
         if (Input.GetKeyDown(interactKey))
         {
            isInteractPressed = true;
@@ -54,7 +56,7 @@ public  class Interactor : MonoBehaviour, IInteract
         }
         if(Input.GetKeyUp(interactKey))
         {
-            isInteractPressed = false; 
+            isInteractPressed = true; 
         }
         // return?
     }
@@ -66,10 +68,10 @@ public  class Interactor : MonoBehaviour, IInteract
             isTalkPressed = true;
             Debug.Log("Talk engaged");
         }
-        if (Input.GetKeyUp(talkKey))
-        {
-            isTalkPressed = false;
-        }
+        //if (Input.GetKeyUp(talkKey))
+        //{
+        //    isTalkPressed = false;
+        //}
         // return?
     }
 

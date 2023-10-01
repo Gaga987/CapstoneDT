@@ -1869,7 +1869,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1363331012}
-  - {fileID: 721430171}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1986,7 +1985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d0a0fdc6346bca4798dd3412c3ca2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisFight: {fileID: 633754682}
 --- !u!4 &633754684
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,8 +2112,8 @@ Transform:
   - {fileID: 1331436111}
   - {fileID: 973898571}
   - {fileID: 1917151109}
-  m_Father: {fileID: 564694992}
-  m_RootOrder: 1
+  m_Father: {fileID: 1363331012}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &804847019
 GameObject:
@@ -2157,9 +2155,6 @@ MonoBehaviour:
   playerPanel: {fileID: 252708096}
   bossPanel: {fileID: 1335422884}
   isPlayerTrue: 0
-  fightADone: 0
-  fightBDone: 0
-  fightName: {fileID: 633754682}
 --- !u!4 &804847021
 Transform:
   m_ObjectHideFlags: 0
@@ -3084,7 +3079,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -3582,6 +3577,7 @@ Transform:
   - {fileID: 502038722}
   - {fileID: 1893480207}
   - {fileID: 826403991}
+  - {fileID: 721430171}
   m_Father: {fileID: 564694992}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

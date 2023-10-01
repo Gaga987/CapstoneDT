@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadFightB()
     {
-        SceneManager.LoadScene(SceneCollection.FightB.ToString());  
+        SceneManager.LoadScene(SceneCollection.SecondFight.ToString());  
     }
 
 
@@ -92,7 +92,7 @@ public enum SceneCollection
     StartMenu,  //0
     QuestBegins,  //1
     FightA,   //2
-    FightB,  //3
+    SecondFight,  //3
     AHappyEnding,  //4 
     Loser  //5 
 }
