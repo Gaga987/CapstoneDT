@@ -14,6 +14,9 @@ I don't need payment!
 What do you got?
 -> followup (" With the Spear of Deliverance of course! Riser, the Mystic, who saved us long ago... left the Spear in the care of Demorious - the realms oracle.") 
 
++[What's with this crowd?] 
+There's a lot of people here! 
+-> followup (" Representatives of the realms townspeople have gathered here to express their gratitude!")
 
 
 
