@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpPower = 4f;
     [SerializeField] private bool isJumping = false;
 
+ 
+
 
     void Start()
     {

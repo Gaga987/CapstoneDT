@@ -12,7 +12,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private bool isFacingRight = false;
     [SerializeField] private float jumpPower = 4f;
+<<<<<<< Updated upstream
     [SerializeField] private bool isJumping = false;
+=======
+    [SerializeField] private bool isGrounded = false;
+
+    Animator animator;
+>>>>>>> Stashed changes
 
     public Animator animator;
     private float horizontalMove;
@@ -20,13 +26,20 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         FlipSprite();
-        Jump();
+        
+        if(Input.GetButtonDown("Jump")&& isGrounded)
+        {
+            playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
+            isGrounded = false;
+            animator.SetBool("isJumping", !isGrounded);
+        }
      
     }
 
@@ -35,10 +48,12 @@ public class PlayerMovement : MonoBehaviour
         
  
         playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
+        animator.SetFloat("xVelocity", Mathf.Abs(playerRB.velocity.x));
+      
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isJumping = false; 
+        isGrounded = false; 
     }
     public void OnLanding()
     {
@@ -58,8 +73,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+<<<<<<< Updated upstream
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
@@ -67,6 +83,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", true);
            
         }
+=======
+        isGrounded = true;
+>>>>>>> Stashed changes
     }
     /// <summary>
     ///  not working atm, called in U || FU

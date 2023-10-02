@@ -288,7 +288,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133144527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
   m_LocalPosition: {x: -181.1, y: -1.23, z: -33.73388}
+=======
+  m_LocalPosition: {x: -194.75081, y: -1.8627, z: -33.73388}
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1456,10 +1460,14 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
 <<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
   m_AnchoredPosition: {x: -374.3, y: 127.6}
   m_SizeDelta: {x: -783.07, y: -272.11}
 =======
   m_AnchoredPosition: {x: -276.3999, y: 179.7}
+=======
+  m_AnchoredPosition: {x: -276.40002, y: 179.7}
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
   m_SizeDelta: {x: -596.93, y: -400.38}
 >>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1546,8 +1554,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
   testnum: 0
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
   songSource: {fileID: 0}
   oneshotSource: {fileID: 0}
   intro: {fileID: 0}
@@ -1562,6 +1573,9 @@ MonoBehaviour:
   onplayerRecover: {fileID: 0}
   onEnemyAttack: {fileID: 0}
   spearOfDivination: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
+=======
 >>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
 --- !u!1 &476010564
 GameObject:
@@ -1957,9 +1971,13 @@ Transform:
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
 <<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
   m_LocalPosition: {x: -181.1, y: -1.23, z: -33.73388}
 =======
   m_LocalPosition: {x: -193.75623, y: -1.5676717, z: -33.73388}
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
+=======
+  m_LocalPosition: {x: -194.74811, y: -1.5779033, z: -33.73388}
 >>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7188,10 +7206,25 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.5
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
     - target: {fileID: 691142803690456019, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 016cf85f16b44424695619d259f6b943, type: 2}
+=======
+    - target: {fileID: 691142803690456017, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 691142803690456019, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 691142803690456019, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a7be19c7f2a20024998698fb2fd559b9, type: 2}
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
     - target: {fileID: 691142803690456019, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
@@ -7202,19 +7235,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 691142803690456020, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_LocalScale.x
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
       value: 1
+=======
+      value: 1.1197
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
       objectReference: {fileID: 0}
     - target: {fileID: 691142803690456020, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.1625113
       objectReference: {fileID: 0}
     - target: {fileID: 691142803690456020, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.06
+      value: 0.2392
       objectReference: {fileID: 0}
     - target: {fileID: 691142803690456020, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.67
+      value: -0.9027
       objectReference: {fileID: 0}
     - target: {fileID: 691142803690456020, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7252,10 +7289,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: legacyplayer
       objectReference: {fileID: 0}
+    - target: {fileID: 691142803690456022, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 691142803690456023, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_Sprite
       value: 
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
       objectReference: {fileID: 21300000, guid: efbb2322c29fcbb4987a51dafbd83fa7, type: 3}
+=======
+      objectReference: {fileID: 21300000, guid: 4aa916124f91e484cbbd3cb575d814c3, type: 3}
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
     - target: {fileID: 691142803690456023, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
       propertyPath: m_Color.b
       value: 0.65325737
@@ -7279,14 +7324,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 691142803690456021, guid: 9bbf3aabbb64f654b99b937681325b72, type: 3}
   m_PrefabInstance: {fileID: 691142802686820837}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
 --- !u!114 &691142802686820844
 MonoBehaviour:
+=======
+--- !u!70 &691142802686820839
+CapsuleCollider2D:
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691142802686820838}
   m_Enabled: 1
+<<<<<<< Updated upstream:Assets/Scenes/FreshStart.unity
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62b888e75700e134e8ceb0af3db4ae50, type: 3}
   m_Name: 
@@ -7297,6 +7348,16 @@ MonoBehaviour:
   isFacingRight: 0
   jumpPower: 4
   isJumping: 0
+=======
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.17333435, y: -2.131646}
+  m_Size: {x: 4.8133974, y: 0.9378314}
+  m_Direction: 1
+>>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
 --- !u!1001 &1551613176392472199
 PrefabInstance:
 >>>>>>> Stashed changes:Assets/Scenes/QuestBegins.unity
