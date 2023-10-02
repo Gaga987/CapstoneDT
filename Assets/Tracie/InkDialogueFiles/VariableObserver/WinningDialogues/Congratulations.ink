@@ -20,7 +20,7 @@ What do you got?
 
 === followup(choices) ===
 ~winningtopics = choices 
-We mustn't accept charity. Please do take the Spear of Deliverance {choices}!  
+ {choices} We mustn't accept charity. Please do take the Spear of Deliverance !  
 -> END 
 
 
