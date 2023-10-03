@@ -52,7 +52,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine displayLineCoroutine; 
     // readonly
     public bool dialogueIsPlaying { get; private set; }
-    private bool canContinueToNextLine; 
+    private bool canContinueToNextLine = false; 
 
  
     private void Start()
@@ -73,7 +73,9 @@ public class DialogueManager : MonoBehaviour
         // handle continuing to the next line in the dialogue when submit is pressed 
         // exhibit b 
         //double check  prevents the story from continuing if there are choices 
-        if (currentStory.currentChoices.Count == 0 && Input.GetKeyDown(KeyCode.T))
+        if (canContinueToNextLine && 
+            currentStory.currentChoices.Count == 0
+            && Input.GetKeyDown(KeyCode.T))
         {
             ContinueStory(); 
         }
@@ -198,15 +200,15 @@ public class DialogueManager : MonoBehaviour
     {
 
         // clear the dialogue text for the next line 
-        dialogueText.text = "  "; 
-
+        dialogueText.text = "  ";
+        canContinueToNextLine = false; 
         // display each letter one by one by turning our string into a character array 
         foreach (char letter in line.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed); 
         }
-
+        canContinueToNextLine = true; 
     }
 
 
@@ -219,9 +221,13 @@ public class DialogueManager : MonoBehaviour
     /// <param name="choiceIndex"></param>
     public void MakeChoice( int choiceIndex)
     {
-        currentStory.ChooseChoiceIndex(choiceIndex); 
-        // shouldnt need register on submit 
-        ContinueStory();
+        if (canContinueToNextLine)
+        {
+            currentStory.ChooseChoiceIndex(choiceIndex);
+            // shouldnt need register on submit 
+            ContinueStory();
+        }
+    
     }
 
     public Ink.Runtime.Object GetVariableState(string variableName)
