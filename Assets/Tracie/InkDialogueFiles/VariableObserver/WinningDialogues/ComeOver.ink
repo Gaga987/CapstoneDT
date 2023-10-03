@@ -8,6 +8,6 @@ Please feed me chef!
 
 
 ===chefslove(choices)=== 
-{choices}  Dinner for the chosen one! No expenses barred! All hands on deck! This brave hero needs a feast for a champion!  
+{choices}  Dinner for the chosen one! No expenses barred! All hands on deck! This brave hero needs a feast fit for a champion!  
 -> END 
 
