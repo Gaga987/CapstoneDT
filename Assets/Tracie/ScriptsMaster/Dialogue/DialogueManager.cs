@@ -5,6 +5,7 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems; 
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 /// <summary>
 /// tt : 
 /// inkJSON files are sent to the Dialogue Manager which then 
@@ -128,8 +129,7 @@ public class DialogueManager : MonoBehaviour
             // somewhat like popping a line out of a stack, settting the text for the current dialogue line
             //dialogueText.text = currentStory.Continue();
             // CHANGING TO IEN  4 TYPING EFFECT 
-            // display choices, if any for this dialogue line
-            DisplayChoices(); 
+       
         }
         else
         {
@@ -185,10 +185,22 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(SelectFirstChoice());
     }
 
-    // setting the first selected choice using a coroutine 
-    //event system requires we clear first, then wait for at least once frame 
-    // before we set the current selected object. 
-     private IEnumerator SelectFirstChoice()
+    private void HideChoices()
+    {
+        foreach (GameObject choice in choices)
+        {
+            choice.SetActive(false);
+        }
+    }
+
+
+    /// <summary>
+    ///  setting the first selected choice using a coroutine 
+    ///event system requires we clear first, then wait for at least once frame
+   /// before we set the current selected object. 
+   /// </summary>
+   /// <returns></returns>
+    private IEnumerator SelectFirstChoice()
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
@@ -201,17 +213,20 @@ public class DialogueManager : MonoBehaviour
 
         // clear the dialogue text for the next line 
         dialogueText.text = "  ";
-        canContinueToNextLine = false; 
+        canContinueToNextLine = false;
+        HideChoices(); 
         // display each letter one by one by turning our string into a character array 
         foreach (char letter in line.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed); 
         }
-        canContinueToNextLine = true; 
+        canContinueToNextLine = true;
+        // display choices, if any for this dialogue line
+        DisplayChoices();
     }
 
-
+    
 
 
 
