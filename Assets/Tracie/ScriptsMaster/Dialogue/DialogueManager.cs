@@ -44,9 +44,15 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     private float waitFor = .2f;
 
-    private DialogueVariables dialogueVariables; 
+    [Header("Parameters Configurations")]
+    [SerializeField] private float typingSpeed = .04f;
+
+
+    private DialogueVariables dialogueVariables;
+    private Coroutine displayLineCoroutine; 
     // readonly
     public bool dialogueIsPlaying { get; private set; }
+    private bool canContinueToNextLine; 
 
  
     private void Start()
@@ -110,14 +116,22 @@ public class DialogueManager : MonoBehaviour
         // always returns false if there are choices but havent been selected 
         if (currentStory.canContinue)
         {
-            
+            //guard clause to set text for the current dialogue line 
+            if (displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine); 
+            }
+           displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue())); 
+            // CHANGING TO IEN 4 TYPING EFFECT 
             // somewhat like popping a line out of a stack, settting the text for the current dialogue line
-            dialogueText.text = currentStory.Continue();
+            //dialogueText.text = currentStory.Continue();
+            // CHANGING TO IEN  4 TYPING EFFECT 
             // display choices, if any for this dialogue line
             DisplayChoices(); 
         }
         else
         {
+
             StartCoroutine(ExitDialogueMode()); 
         }
     }
@@ -178,6 +192,26 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject); 
     }
+
+
+    private IEnumerator DisplayLine(string line)
+    {
+
+        // clear the dialogue text for the next line 
+        dialogueText.text = "  "; 
+
+        // display each letter one by one by turning our string into a character array 
+        foreach (char letter in line.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed); 
+        }
+
+    }
+
+
+
+
 
     /// <summary>
     /// tt: on click function enabling player to make choices 
