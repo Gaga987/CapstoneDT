@@ -1,53 +1,55 @@
-using UnityEngine.Audio;
+using JetBrains.Annotations;
 using System;
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
+    public AudioArray[] themeSound, gameplaySounds;
+    public AudioSource themeSource, gameplaysoundsSource;
 
-    [Header("Sound Configurations")]
-    [SerializeField] private AudioSource songSource;
-    [SerializeField] private AudioSource oneshotSource;
-
-    [Header("Sound Collection")]
-    public AudioClip intro; 
-    public AudioClip backgroundAdventuring;
-    public AudioClip fight; 
-    public AudioClip happyEnding;
-    public AudioClip gameOver; 
-    //public AudioClip onplayerLose;
-    //public AudioClip onplayerDamage; 
-    //public AudioClip onplayerAttack;
-    //public AudioClip onplayerStrongAttack; 
-    //public AudioClip onplayerRecover;
-    //public AudioClip onEnemyAttack;
-    public AudioClip spearOfDivination;
-
-
-    private void Awake()
+    public void PlayTheme(string name)
     {
-        DontDestroyOnLoad(gameObject); 
-    }
-    private void Start()
-    {
-        songSource.clip = intro;
-        songSource.Play();
+        AudioArray audioArray = Array.Find(themeSound, theme => theme.name == name);
+
+        if (audioArray == null)
+        {
+            Debug.Log(" Audio name not found");
+        }
+        else
+        {
+            themeSource.clip = audioArray.clip;
+            themeSource.Play();
+        }
     }
 
-
-    
-
-    public void PlayOneShot(AudioClip clip)
+    public void PlaySingleSounds(string name)
     {
-        oneshotSource.PlayOneShot(clip); 
+        AudioArray audioArray = Array.Find(gameplaySounds, gS => gS.name == name);
+
+        if (audioArray == null)
+        {
+            Debug.Log(" Audio name not found");
+        }
+        else
+        {
+            gameplaysoundsSource.clip = audioArray.clip;
+            gameplaysoundsSource.PlayOneShot(audioArray.clip);
+        }
     }
 
+    void Start()
+    {
+        PlayTheme("StartingSound");
+        Debug.Log("Audio Manager :  " +   themeSound  +  "Playing Confirmed");
 
-
-
+    }
 }
+
+
+
 
 
 

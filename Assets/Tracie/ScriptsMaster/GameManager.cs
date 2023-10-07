@@ -19,12 +19,19 @@ public class GameManager : MonoBehaviour
         return instance; 
     }
 
+    SoundManager soundManager; 
+
+
+
+
     /// <summary>
     ///  Loads StartMenu from any onclick
     /// </summary>
     public void LoadStartMenu()
     {
         SceneManager.LoadScene(SceneCollection.StartMenu.ToString());
+        soundManager.PlayTheme("StartingSound");
+        Debug.Log("Audio Manager :  " + soundManager.themeSound.ToString() + "Playing Confirmed");
     }
 
     /// <summary>
