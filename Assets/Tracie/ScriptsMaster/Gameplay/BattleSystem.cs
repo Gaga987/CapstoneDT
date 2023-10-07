@@ -92,7 +92,10 @@ public class BattleSystem : MonoBehaviour
         Debug.Log("Battle initialized");
 
         //initializes dialogue during battle - boss first 
+        SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+        Debug.Log("Sound : Battle chat"); 
         shitTalkinText.text = "BEHOLD " + bossC.combatantName + " IS UPON YOU";
+
 
         // NEED: One shot audio for boss arrival // battle initalization 
 
@@ -120,6 +123,8 @@ public class BattleSystem : MonoBehaviour
     private void PlayerTurn()
     {
         isPlayerTrue = true;
+        SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+        Debug.Log("Sound : Battle chat");
         shitTalkinText.text = " The decision is yours! Choose your next tactic.";
     }
 
@@ -178,7 +183,9 @@ public class BattleSystem : MonoBehaviour
 
                 //update ui 
                 playerintText.text = playerC.currentHP.ToString();
-                shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
+            SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+            Debug.Log("Sound : Battle chat");
+            shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
 
                 //  NEED : Stylistic event 
 
@@ -217,7 +224,9 @@ public class BattleSystem : MonoBehaviour
 
                 //update ui 
                 bossintText.text = bossC.currentHP.ToString();
-                shitTalkinText.text = bossC.combatantName + " has been Felled! ";
+            SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+            Debug.Log("Sound : Battle chat");
+            shitTalkinText.text = bossC.combatantName + " has been Felled! ";
 
 
 
@@ -258,6 +267,8 @@ public class BattleSystem : MonoBehaviour
             bossPanel.TrackHP(bossC.currentHP);
             // update ui 
             bossintText.text = bossC.currentHP.ToString();
+            SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+            Debug.Log("Sound : Battle chat");
             shitTalkinText.text = bossC.combatantName + " has been gravely wounded!";
 
             // DRAGANA 
@@ -293,11 +304,12 @@ public class BattleSystem : MonoBehaviour
             isPlayerTrue = false; 
             StopCoroutine(PlayerStrongAttack());
             StopCoroutine(PlayerAttackBasic());
-            StopCoroutine(PlayerRecover()); 
+            StopCoroutine(PlayerRecover());
 
-            // INCREASE  BUFF BASED ON BOSS IN PREFABS 
-
-            shitTalkinText.text = bossC.combatantName + " strikes with a rageful glory! ";
+        // INCREASE  BUFF BASED ON BOSS IN PREFABS 
+        SoundManager.GetInstance().PlaySingleSounds("EnemyAttack");
+        Debug.Log("Sound : EnemyAttack");
+        shitTalkinText.text = bossC.combatantName + " strikes with a rageful glory! ";
 
             // DRAGANA 
 
@@ -342,14 +354,18 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.Won)
         { 
             StopAllCoroutines();
-        shitTalkinText.text = " You have excorsized this terrible scourge... ";
+            SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+            Debug.Log("Sound : Battle chat");
+            shitTalkinText.text = " You have excorsized this terrible scourge... ";
         Debug.Log(" won fight  ");
             GameManager.GetInstance().LoadNextScene();
     }
             //THIS WORKS!! UP TOP NOT EXECUTED
             else if( state == BattleState.Lost)
                         {
-                        shitTalkinText.text = " You have proven NO match for " + bossC.combatantName;
+            SoundManager.GetInstance().PlaySingleSounds("BattleChat");
+            Debug.Log("Sound : Battle chat");
+            shitTalkinText.text = " You have proven NO match for " + bossC.combatantName;
                         Debug.Log(" lose");
                         GameManager.GetInstance().LosingLost();
 

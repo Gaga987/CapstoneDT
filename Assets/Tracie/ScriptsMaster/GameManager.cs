@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
 
     public void LosingLost()
     {
-        SceneManager.LoadScene(SceneCollection.Loser.ToString()); 
+        SceneManager.LoadScene(SceneCollection.Loser.ToString());
+        SoundManager.GetInstance().PlayTheme("LosingTheme");
+        Debug.Log("Sound : losing AND i am sorry youve lost. better luck next time"); 
     }
 
     public void LoadScene( Scene scene)
