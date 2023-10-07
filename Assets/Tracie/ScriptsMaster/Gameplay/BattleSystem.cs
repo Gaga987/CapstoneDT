@@ -24,25 +24,41 @@ public enum BattleState
 public class BattleSystem : MonoBehaviour
 {
     [Header("Battle System Configurations")]
-   [SerializeField] private BattleState state;
+    [SerializeField] private BattleState state;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private Transform playerStation;
     [SerializeField] private Transform bossStation;
     [SerializeField] private TextMeshProUGUI shitTalkinText;
-   [SerializeField] private  TextMeshProUGUI playerintText;
+    [SerializeField] private TextMeshProUGUI playerintText;
     [SerializeField] private TextMeshProUGUI bossintText;
+    [SerializeField] private int recoverAmount; 
 
-    private float coroutineWaitTime = 6f;
-    private float preventPlayerAction = 6f;
-    private float inbetweenWaiting = 10f; 
-    private int recoverAmount = 8;
+    private float coroutineWaitTime = 4f;
+    private float preventPlayerAction = 4f;
+    //private float inbetweenWaiting = 10f;
 
-    Combatant playerC; 
+
+    Combatant playerC;
     Combatant bossC;
 
-    public BattlePanel playerPanel; 
+  
+
+    public BattlePanel playerPanel;
     public BattlePanel bossPanel;
+
+    public bool isPlayerTrue;
+  
+
+
+
+    //SoundManager soundManager;
+
+    private void Awake()
+    {
+        //  soundManager = GameObject.FindGameObjectWithTag("Sound").GetComponent<SoundManager>();  
+    }
+
 
     /// <summary>
     /// tt: set the state and initalize 
@@ -50,7 +66,12 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         state = BattleState.Start;
-        StartCoroutine(InitializeBattle()); 
+        StartCoroutine(InitializeBattle());
+        StartCoroutine(ToggleTurn());
+
+
+        // set battle music 
+        //soundManager.PlayOneShot(soundManager.fight); 
     }
 
 
@@ -60,23 +81,23 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     private IEnumerator InitializeBattle()
     {
-
         //player
-       GameObject player =  Instantiate(playerPrefab, playerStation);
-         playerC =     player.GetComponent<Combatant>(); 
-
+        GameObject player = Instantiate(playerPrefab, playerStation);
+        playerC = player.GetComponent<Combatant>();
+        Debug.Log("player on the scene");
         // boss
         GameObject boss = Instantiate(bossPrefab, bossStation);
         bossC = boss.GetComponent<Combatant>();
+        Debug.Log("boss on the scene");
         Debug.Log("Battle initialized");
 
         //initializes dialogue during battle - boss first 
-        shitTalkinText.text = "BEHOLD " +  bossC.combatantName  + " IS UPON YOU";
+        shitTalkinText.text = "BEHOLD " + bossC.combatantName + " IS UPON YOU";
 
         // NEED: One shot audio for boss arrival // battle initalization 
 
         // DRAGANA 
-        Debug.Log(" Dragana opening animationsss"); 
+        Debug.Log(" Dragana opening animationsss");
 
 
 
@@ -85,11 +106,11 @@ public class BattleSystem : MonoBehaviour
         bossPanel.SetBattleUI(bossC);
 
         // coroutine 
-        yield return new WaitForSeconds(coroutineWaitTime); 
+        yield return new WaitForSeconds(coroutineWaitTime);
 
         // change state to player
         state = BattleState.PlayerTurn;
-        PlayerTurn(); 
+        PlayerTurn();
     }
 
 
@@ -98,19 +119,20 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     private void PlayerTurn()
     {
-        shitTalkinText.text = " The decision is yours! Choose your next tactic."; 
+        isPlayerTrue = true;
+        shitTalkinText.text = " The decision is yours! Choose your next tactic.";
     }
 
 
     /// <summary>
     ///  tt: handles simple attack selection
     /// </summary>
-    public  void OnFightButton()
+    public void OnFightButton()
     {
         if (state != BattleState.PlayerTurn)
             return;
 
-        StartCoroutine(PlayerAttackBasic()); 
+        StartCoroutine(PlayerAttackBasic());
     }
 
     /// <summary>
@@ -121,7 +143,7 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PlayerTurn)
             return;
 
-        StartCoroutine(PlayerRecover()); 
+        StartCoroutine(PlayerRecover());
     }
 
     /// <summary>
@@ -133,7 +155,7 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PlayerTurn)
             return;
 
-        StartCoroutine(PlayerStrongAttack()); 
+        StartCoroutine(PlayerStrongAttack());
         // NEED : One shot audio for strong attack 
 
 
@@ -146,26 +168,30 @@ public class BattleSystem : MonoBehaviour
     ///  tt : handles hp and hp 2 text 
     /// </summary>
     /// <returns></returns>
-    private IEnumerator PlayerRecover()
-    {
-        playerC.Recover(recoverAmount);
-        playerPanel.TrackHP(playerC.currentHP);
+        private IEnumerator PlayerRecover()
+        {
+            if (isPlayerTrue)
+            {
+                isPlayerTrue = false;
+                playerC.Recover(recoverAmount);
+                playerPanel.TrackHP(playerC.currentHP);
 
-        //update ui 
-        playerintText.text = playerC.currentHP.ToString();
-        shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
+                //update ui 
+                playerintText.text = playerC.currentHP.ToString();
+                shitTalkinText.text = " The heavens have blessed you. Go forth and conquer! ";
 
-        //  NEED : Stylistic event 
+                //  NEED : Stylistic event 
 
-        yield return new WaitForSeconds(preventPlayerAction);
-       
+                yield return new WaitForSeconds(preventPlayerAction);
 
-        // next state 
 
-        state = BattleState.EnemyTurn;
-        StartCoroutine(EnemyTurn()); 
-    }
-    
+                // next state 
+
+                state = BattleState.EnemyTurn;
+                StartCoroutine(EnemyTurn());
+            }
+        }
+
 
 
 
@@ -176,114 +202,132 @@ public class BattleSystem : MonoBehaviour
     /// tt : handles attack
     /// </summary>
     /// <returns></returns>
-    private IEnumerator PlayerAttackBasic()
-    {
-        // do basic damage 
-
-      bool isDead =   bossC.TakeDamage(playerC.damage);
-        bossPanel.TrackHP(bossC.currentHP);
-       
-        //update ui 
-        bossintText.text = bossC.currentHP.ToString(); 
-        shitTalkinText.text = bossC.combatantName + " has been Felled! "  ;
-
-
-
-        // DRAGANA 
-        Debug.Log(" Dragana player deals damage animationsss");
-
-        yield return new WaitForSeconds(preventPlayerAction);
-
-
-        // has died? 
-        if (isDead)
+        private IEnumerator PlayerAttackBasic()
         {
-            // end battle through slaying boss 
-            state = BattleState.Won;
-            EndBattle(); 
+            if (isPlayerTrue)
+            { // disable player 
+                isPlayerTrue = false;
+
+
+                // do basic damage 
+
+                bool isDead = bossC.TakeDamage(playerC.damage);
+                bossPanel.TrackHP(bossC.currentHP);
+
+
+                //update ui 
+                bossintText.text = bossC.currentHP.ToString();
+                shitTalkinText.text = bossC.combatantName + " has been Felled! ";
+
+
+
+                // DRAGANA 
+                Debug.Log(" Dragana player deals damage animationsss");
+
+                yield return new WaitForSeconds(preventPlayerAction);
+
+
+                // has died? 
+                if (isDead)
+                {
+                    // end battle through slaying boss 
+                    state = BattleState.Won;
+                    EndBattle();
+                }
+                else
+                {
+                    //  if !isDead then  enemy turn 
+                    state = BattleState.EnemyTurn;
+                    StartCoroutine(EnemyTurn());
+                }
+            }
         }
-        else
-        {
-            //  if !isDead then  enemy turn 
-            state = BattleState.EnemyTurn;
-            StartCoroutine(EnemyTurn()); 
-        }
-    }
 
 
     /// <summary>
     /// tt: strong attack handle 
     /// </summary>
     /// <returns></returns>
-    private IEnumerator  PlayerStrongAttack()
-    {
-        // do strong attack damage 
-        bool isDead = bossC.TakeStrongAttackDamage(playerC.strongAttackDamage); 
-         bossPanel.TrackHP(bossC.currentHP);
-        // update ui 
-        bossintText.text = bossC.currentHP.ToString(); 
-        shitTalkinText.text = bossC.combatantName + " has been gravely wounded!";
-
-        // DRAGANA 
-        Debug.Log(" Dragana player deals STRONG ATTACK  damage animationsss");
-
-        yield return new WaitForSeconds(preventPlayerAction);
-
-        // has died? 
-        if (isDead)
+        private IEnumerator  PlayerStrongAttack()
         {
-            // end battle through slaying boss 
-            state = BattleState.Won;
-            EndBattle();
-        }
-        else
+        if (isPlayerTrue)
         {
-            //  if !isDead then  enemy turn 
-            state = BattleState.EnemyTurn;
-            StartCoroutine(EnemyTurn());
+            isPlayerTrue = false;
+            // do strong attack damage 
+            bool isDead = bossC.TakeStrongAttackDamage(playerC.strongAttackDamage);
+            bossPanel.TrackHP(bossC.currentHP);
+            // update ui 
+            bossintText.text = bossC.currentHP.ToString();
+            shitTalkinText.text = bossC.combatantName + " has been gravely wounded!";
+
+            // DRAGANA 
+            Debug.Log(" Dragana player deals STRONG ATTACK  damage animationsss");
+
+            yield return new WaitForSeconds(preventPlayerAction);
+
+            // has died? 
+            if (isDead)
+            {
+                // end battle through slaying boss 
+                state = BattleState.Won;
+                EndBattle();
+            }
+            else
+            {
+                //  if !isDead then  enemy turn 
+
+                state = BattleState.EnemyTurn;
+                StartCoroutine(EnemyTurn());
+            }
         }
-    }
+        }
 
 
 
-    /// <summary>
-    ///  GET HELP - BOSS 
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator EnemyTurn()
-    {
-        // INCREASE  BUFF BASED ON BOSS IN PREFABS 
+        /// <summary>
+        ///  GET HELP - BOSS 
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator EnemyTurn()
+        {
+            isPlayerTrue = false; 
+            StopCoroutine(PlayerStrongAttack());
+            StopCoroutine(PlayerAttackBasic());
+            StopCoroutine(PlayerRecover()); 
 
-        shitTalkinText.text = bossC.combatantName + " strikes with a rageful glory! ";
+            // INCREASE  BUFF BASED ON BOSS IN PREFABS 
 
-        // DRAGANA 
+            shitTalkinText.text = bossC.combatantName + " strikes with a rageful glory! ";
 
-        Debug.Log(" Dragana enemy strikes  animationsss");
+            // DRAGANA 
+
+            Debug.Log(" Dragana enemy strikes  animationsss");
 
 
-        // deal damage 
-        bool isDead =    playerC.TakeDamage(bossC.damage); 
+            // deal damage 
+            bool isDead =    playerC.TakeDamage(bossC.damage); 
        
 
-        // update ui
-        playerPanel.TrackHP(playerC.currentHP);
-        playerintText.text = playerC.currentHP.ToString(); 
+            // update ui
+            playerPanel.TrackHP(playerC.currentHP);
+            playerintText.text = playerC.currentHP.ToString(); 
 
-        yield return new WaitForSeconds(coroutineWaitTime);
+            yield return new WaitForSeconds(coroutineWaitTime);
 
-        if(isDead)
-        {
-            state = BattleState.Lost;
-            EndBattle();
+            if(isDead)
+            {
+                state = BattleState.Lost;
+
+            EndBattle(); 
             
-        }
-        else
-        {
-            state = BattleState.PlayerTurn;
+            }
+            else
+            {
+                state = BattleState.PlayerTurn;
           
-            PlayerTurn();
+                PlayerTurn();
      
-        }
+            }
 
     }
 
@@ -294,34 +338,47 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     private void EndBattle()
     {
-       
+
         if (state == BattleState.Won)
+        { 
+            StopAllCoroutines();
+        shitTalkinText.text = " You have excorsized this terrible scourge... ";
+        Debug.Log(" won fight  ");
+            GameManager.GetInstance().LoadNextScene();
+    }
+            //THIS WORKS!! UP TOP NOT EXECUTED
+            else if( state == BattleState.Lost)
+                        {
+                        shitTalkinText.text = " You have proven NO match for " + bossC.combatantName;
+                        Debug.Log(" lose");
+                        GameManager.GetInstance().LosingLost();
+
+                        // DRAGANA 
+                        Debug.Log(" Dragana end battle animations"); 
+                    }
+                }
+
+
+
+        /// <summary>
+        ///  toggles through check var on player turn 
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator ToggleTurn()
         {
-            shitTalkinText.text = " You have excorsized this terrible scourge... ";
-            Debug.Log(" win ");
-      //      StartCoroutine(Wait());
-            GameManager.GetInstance().EnterWinningMoment();
-       //     StopCoroutine(Wait()); 
-
-        }
-        else if( state == BattleState.Lost)
+            while (isPlayerTrue)
             {
-            shitTalkinText.text = " You have proven NO match for " + bossC.combatantName;
-            Debug.Log(" lose");
-            GameManager.GetInstance().LosingLost();
+                if (isPlayerTrue)
+                {
+                    // wait 
+                    yield return new WaitForSeconds(6f);
+                    // change var
+                    isPlayerTrue = false;
+                }
+                yield return null;
+            }
+      }
 
-            // DRAGANA 
-            Debug.Log(" Dragana end battle animations"); 
-        }
+
+
     }
-
-
-
-
-    private IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(inbetweenWaiting);
-    }
-
-
-}
