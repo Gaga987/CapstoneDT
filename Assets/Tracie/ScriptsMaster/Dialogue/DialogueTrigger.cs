@@ -58,6 +58,8 @@ public class DialogueTrigger : MonoBehaviour
         if(/*Interactor.GetInstance().isInteractPressed &&*/ Input.GetKeyDown(interactKey))
      
                 {
+                SoundManager.GetInstance().PlaySingleSounds("InteractSound");
+                Debug.Log("Sound : Interact "); 
                 //   Debug.Log(inkJSON.text);  refactored to no longer include debug and instead reference the DM 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
                  }

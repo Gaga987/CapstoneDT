@@ -17,11 +17,15 @@ public class InGameUI : MonoBehaviour
 
     public void ShowControlPanel()
     {
+        SoundManager.GetInstance().PlaySingleSounds("OnClick");
+        Debug.Log("Sound : On Click registered"); 
         controlsPanel.SetActive(true);
     }
 
     public void ExitControlPanel()
     {
+        SoundManager.GetInstance().PlaySingleSounds("OnClick");
+        Debug.Log("Sound : On Click registered");
         controlsPanel.SetActive(false);
     }
 
@@ -32,6 +36,8 @@ public class InGameUI : MonoBehaviour
 
     public void OnClickEG()
     {
+        SoundManager.GetInstance().PlaySingleSounds("OnClick");
+        Debug.Log("Sound : On Click registered");
         GameManager.GetInstance().LoadStartMenu(); 
         exitGameButton.onClick.RemoveListener(OnClickEG);
     }

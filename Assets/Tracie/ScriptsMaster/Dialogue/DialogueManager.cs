@@ -78,6 +78,8 @@ public class DialogueManager : MonoBehaviour
             currentStory.currentChoices.Count == 0
             && Input.GetKeyDown(KeyCode.T))
         {
+            SoundManager.GetInstance().PlaySingleSounds("TalkSound");
+            Debug.Log("Sound : talk sound in effect"); 
             ContinueStory(); 
         }
 
@@ -239,6 +241,8 @@ public class DialogueManager : MonoBehaviour
         if (canContinueToNextLine)
         {
             currentStory.ChooseChoiceIndex(choiceIndex);
+            SoundManager.GetInstance().PlaySingleSounds("ContinueDialogue");
+            Debug.Log("Sound : Dialogue select working"); 
             // shouldnt need register on submit 
             ContinueStory();
         }

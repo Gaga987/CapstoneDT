@@ -7,6 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
+    private static SoundManager instance;
+    private void Awake()
+    {
+        if (instance != null && instance != this) { Destroy(this); return; }
+        instance = this;
+    }
+
+    public static SoundManager GetInstance()
+    {
+        return instance;
+    }
+
     public AudioArray[] themeSound, gameplaySounds;
     public AudioSource themeSource, gameplaysoundsSource;
 
@@ -40,12 +52,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    void Start()
+    public void StopSound(string name)
     {
-        PlayTheme("StartingSound");
-        Debug.Log("Audio Manager :  " +   themeSound  +  "Playing Confirmed");
-
+        themeSource.Stop(); 
     }
+
 }
 
 

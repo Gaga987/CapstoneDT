@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 627775725}
   - component: {fileID: 627775726}
   m_Layer: 0
-  m_Name: ThemeSource
+  m_Name: ThemesSoundsSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,11 +817,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0695364c703528b4ca52726e7cbc6e7d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.526
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2362,7 +2362,7 @@ GameObject:
   - component: {fileID: 2088535195}
   - component: {fileID: 2088535196}
   m_Layer: 0
-  m_Name: OneShotSource
+  m_Name: GamePlaySoundsSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2677,7 +2677,11 @@ MonoBehaviour:
   themeSound:
   - name: StartingSound
     clip: {fileID: 8300000, guid: 0695364c703528b4ca52726e7cbc6e7d, type: 3}
-  gameplaySounds: []
+  - name: QuestSound
+    clip: {fileID: 8300000, guid: 7e34e57f4296727459eb521806c3b466, type: 3}
+  gameplaySounds:
+  - name: OnClick
+    clip: {fileID: 8300000, guid: 5e7e132af546040a58e8104150e1db32, type: 3}
   themeSource: {fileID: 627775726}
   gameplaysoundsSource: {fileID: 2088535196}
 --- !u!1 &2126509441

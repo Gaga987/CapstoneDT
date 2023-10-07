@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         return instance; 
     }
 
-    SoundManager soundManager; 
+
 
 
 
@@ -29,9 +29,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void LoadStartMenu()
     {
+        SoundManager.GetInstance().PlayTheme("StartingSound");
+        Debug.Log("Audio Manager :  " + SoundManager.GetInstance().themeSound.ToString() + "Playing Confirmed");
         SceneManager.LoadScene(SceneCollection.StartMenu.ToString());
-        soundManager.PlayTheme("StartingSound");
-        Debug.Log("Audio Manager :  " + soundManager.themeSound.ToString() + "Playing Confirmed");
+   
     }
 
     /// <summary>
@@ -40,7 +41,10 @@ public class GameManager : MonoBehaviour
     public void LoadNewGame()
     {
         SceneManager.LoadScene(SceneCollection.QuestBegins.ToString());
-        Debug.Log("Entering the game, the story begins.");
+      //  SoundManager.GetInstance().StopSound("StartingSound");
+        //Debug.Log(" start sound has stopped"); 
+       SoundManager.GetInstance().PlayTheme("QuestSound");
+        Debug.Log("playing QUEST  sound, Entering the game, the story begins.");
     }
 
 

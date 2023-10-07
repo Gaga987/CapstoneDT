@@ -22,20 +22,26 @@ public class UINavigation : MonoBehaviour
 
     public void OnClickSG()
     {
+        SoundManager.GetInstance().PlaySingleSounds("OnClick");
+        Debug.Log("Sound on click registered"); 
         GameManager.GetInstance().LoadNewGame();
-        //GameManager.GetInstance().LoadScene(GameManager.SceneCollection.QuestBegins) 
   startGame.onClick.RemoveListener(OnClickSG);
     }
 
     public void ShowControlPanel()
     {
+        SoundManager.GetInstance().PlaySingleSounds("OnClick");
+        Debug.Log("Sound on click registered");
         controlPanel.SetActive(true);
+
     }
     /// <summary>
     ///  On button click for Exit Controls
     /// </summary>
     public void ExitControlPanel()
     {
+        SoundManager.GetInstance().PlaySingleSounds("OnClick");
+        Debug.Log("Sound on click registered");
         controlPanel.SetActive(false); 
     }
 }
