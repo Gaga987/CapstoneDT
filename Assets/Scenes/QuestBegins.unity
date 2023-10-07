@@ -4238,18 +4238,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   themeSound:
   - name: StartingSound
-    clip: {fileID: 8300000, guid: 0695364c703528b4ca52726e7cbc6e7d, type: 3}
-  - name: QuestSound
     clip: {fileID: 8300000, guid: 7e34e57f4296727459eb521806c3b466, type: 3}
+  - name: QuestSound
+    clip: {fileID: 8300000, guid: d7743988dc6ed034e9a6372c0b7c412d, type: 3}
+  - name: FightSound
+    clip: {fileID: 8300000, guid: 23d907ce39bf5a3409f0f86ce8bde6bf, type: 3}
+  - name: LosingTheme
+    clip: {fileID: 8300000, guid: 7ee44152ec6586a479cb2b3a1f3ffd88, type: 3}
+  - name: WinningTheme
+    clip: {fileID: 8300000, guid: 0695364c703528b4ca52726e7cbc6e7d, type: 3}
   gameplaySounds:
   - name: OnClick
-    clip: {fileID: 8300000, guid: 5e7e132af546040a58e8104150e1db32, type: 3}
-  - name: ContinueDialogue
-    clip: {fileID: 8300000, guid: 0253015d530ab44d88b7bc7b50512a11, type: 3}
+    clip: {fileID: 8300000, guid: b0b11dcf87a9544be87dcc8e7b6e13c3, type: 3}
+  - name: DialogueSelect
+    clip: {fileID: 8300000, guid: a0f6b0b611d474beab95e07a195f851e, type: 3}
   - name: TalkSound
     clip: {fileID: 8300000, guid: ca35bb2cc4a654633bd87b623e4c5400, type: 3}
   - name: InteractSound
     clip: {fileID: 8300000, guid: 4c3ad2a08425e47cbb3dbf0a8e21af7e, type: 3}
+  - name: Chatting
+    clip: {fileID: 8300000, guid: 76827b774477f4a30816b9316be1c941, type: 3}
+  - name: StrongAttack
+    clip: {fileID: 8300000, guid: e75f6b054523348dfb3b28e2698ddb91, type: 3}
+  - name: RecoverFX
+    clip: {fileID: 8300000, guid: 7cc7d37818ed341adae32e6fe9d640b5, type: 3}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 4af952e562e5246c7841f682b6b126ad, type: 3}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: bf0da8293956649d59ef8645befad746, type: 3}
+  - name: EnemyAttack
+    clip: {fileID: 8300000, guid: 766700b52c75d4cf3b4a053f311bdfbf, type: 3}
+  - name: BattleChat
+    clip: {fileID: 8300000, guid: da4a2622abe334cb488e9a1baf0c8349, type: 3}
   themeSource: {fileID: 1279796030}
   gameplaysoundsSource: {fileID: 1020203414}
 --- !u!4 &1232284284
@@ -4385,9 +4405,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e34e57f4296727459eb521806c3b466, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d7743988dc6ed034e9a6372c0b7c412d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.204
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0

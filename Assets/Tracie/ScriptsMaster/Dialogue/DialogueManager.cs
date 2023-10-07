@@ -79,7 +79,7 @@ public class DialogueManager : MonoBehaviour
             && Input.GetKeyDown(KeyCode.T))
         {
             SoundManager.GetInstance().PlaySingleSounds("TalkSound");
-            Debug.Log("Sound : talk sound in effect"); 
+            Debug.Log("Sound : talk "); 
             ContinueStory(); 
         }
 
@@ -126,6 +126,8 @@ public class DialogueManager : MonoBehaviour
             {
                 StopCoroutine(displayLineCoroutine); 
             }
+            SoundManager.GetInstance().PlaySingleSounds("Chatting"); 
+            Debug.Log("Sound : Chatting"); 
            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue())); 
             // CHANGING TO IEN 4 TYPING EFFECT 
             // somewhat like popping a line out of a stack, settting the text for the current dialogue line
@@ -241,8 +243,8 @@ public class DialogueManager : MonoBehaviour
         if (canContinueToNextLine)
         {
             currentStory.ChooseChoiceIndex(choiceIndex);
-            SoundManager.GetInstance().PlaySingleSounds("ContinueDialogue");
-            Debug.Log("Sound : Dialogue select working"); 
+            SoundManager.GetInstance().PlaySingleSounds("DialogueSelect");
+            Debug.Log("Sound : Dialogue select "); 
             // shouldnt need register on submit 
             ContinueStory();
         }

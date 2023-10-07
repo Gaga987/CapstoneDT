@@ -8,6 +8,8 @@ public class FightTrigger : MonoBehaviour
     {
         if(collider.CompareTag("Player"))
             {
+            SoundManager.GetInstance().PlaySingleSounds("Passing");
+            Debug.Log("Sound : Passing"); 
             GameManager.GetInstance().LoadFightA();
             Debug.Log("Fight A Loaded"); 
         }
