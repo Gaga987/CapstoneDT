@@ -12,18 +12,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private bool isFacingRight = false;
     [SerializeField] private float jumpPower = 4f;
-    [SerializeField] private bool isJumping = false; 
+    [SerializeField] private bool isGrounded = false;
+
+    Animator animator;
 
 
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         FlipSprite();
-        Jump();
+        
+        if(Input.GetButtonDown("Jump")&& isGrounded)
+        {
+            playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
+            isGrounded = false;
+            animator.SetBool("isJumping", !isGrounded);
+        }
      
     }
 
@@ -32,10 +41,12 @@ public class PlayerMovement : MonoBehaviour
         
  
         playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
+        animator.SetFloat("xVelocity", Mathf.Abs(playerRB.velocity.x));
+      
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isJumping = false; 
+        isGrounded = false; 
     }
     /// <summary>
     ///  checks our bool to our horizontal input to flip based on whichever direction 
@@ -51,13 +62,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Input.GetButtonDown("Jump") && !isJumping)
-        {
-            playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
-            isJumping = true;
-        }
+        isGrounded = true;
     }
     /// <summary>
     ///  not working atm, called in U || FU

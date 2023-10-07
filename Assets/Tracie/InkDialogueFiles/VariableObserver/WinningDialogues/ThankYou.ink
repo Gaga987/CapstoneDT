@@ -1,0 +1,1 @@
+Thank you for all of your help! It is our honor to bestow our sacred relic upon you. May your life be filled with pleasures  long after you leave us

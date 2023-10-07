@@ -12,6 +12,7 @@ public class Combatant : MonoBehaviour
     public int strongAttackDamage; 
    public int maxHP;
    public  int currentHP;
+    private PlayerDeath playerDeath;
     
 
 
@@ -24,10 +25,22 @@ public class Combatant : MonoBehaviour
         if (currentHP <= 0)
         {
             return true; 
+
         }
         else
         {
             return false;
+        }
+    }
+    public void Damage (int damage)
+    {
+        currentHP -= damage;
+
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+            // Character is dead, trigger death animation
+            playerDeath.Die();
         }
     }
 
