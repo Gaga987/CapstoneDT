@@ -23,7 +23,7 @@ public class UINavigation : MonoBehaviour
     public void OnClickSG()
     {
         SoundManager.GetInstance().PlaySingleSounds("OnClick");
-        Debug.Log("Sound on click registered"); 
+        Debug.Log("Sound on click registered");
         GameManager.GetInstance().LoadNewGame();
   startGame.onClick.RemoveListener(OnClickSG);
     }

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatantName: SLIMEYGRIMEY
   combatantLevel: 20
-  damage: 20
+  damage: 16
   strongAttackDamage: 100
-  maxHP: 200
+  maxHP: 250
   currentHP: 200

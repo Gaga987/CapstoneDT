@@ -7441,6 +7441,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 766700b52c75d4cf3b4a053f311bdfbf, type: 3}
   - name: BattleChat
     clip: {fileID: 8300000, guid: da4a2622abe334cb488e9a1baf0c8349, type: 3}
+  - name: RegularAttack
+    clip: {fileID: 8300000, guid: 39d95322e08d84fc88a217e689779f38, type: 3}
+  - name: Deliverance
+    clip: {fileID: 8300000, guid: 4810b5971951446d2ba39f367a2dc2d6, type: 3}
   themeSource: {fileID: 1599209996}
   gameplaysoundsSource: {fileID: 1950538780}
 --- !u!1 &1437858879

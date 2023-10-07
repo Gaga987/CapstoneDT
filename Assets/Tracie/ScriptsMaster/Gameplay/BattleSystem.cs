@@ -136,7 +136,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PlayerTurn)
             return;
-
+        SoundManager.GetInstance().PlaySingleSounds("RegularAttack");
+        Debug.Log("Sound : Regular Attack");
         StartCoroutine(PlayerAttackBasic());
     }
 
@@ -147,7 +148,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PlayerTurn)
             return;
-
+        SoundManager.GetInstance().PlaySingleSounds("RecoverFX");
+        Debug.Log("Sound : Recover"); 
         StartCoroutine(PlayerRecover());
     }
 
@@ -159,7 +161,8 @@ public class BattleSystem : MonoBehaviour
 
         if (state != BattleState.PlayerTurn)
             return;
-
+        SoundManager.GetInstance().PlaySingleSounds("StrongAttack");
+        Debug.Log("Sound : Strong Attack");
         StartCoroutine(PlayerStrongAttack());
         // NEED : One shot audio for strong attack 
 
@@ -178,6 +181,7 @@ public class BattleSystem : MonoBehaviour
             if (isPlayerTrue)
             {
                 isPlayerTrue = false;
+          
                 playerC.Recover(recoverAmount);
                 playerPanel.TrackHP(playerC.currentHP);
 
@@ -279,7 +283,10 @@ public class BattleSystem : MonoBehaviour
             // has died? 
             if (isDead)
             {
+                SoundManager.GetInstance().PlaySingleSounds("EnemyDeath");
+                Debug.Log("Sound : Enemy Death"); 
                 // end battle through slaying boss 
+
                 state = BattleState.Won;
                 EndBattle();
             }
@@ -328,6 +335,8 @@ public class BattleSystem : MonoBehaviour
 
             if(isDead)
             {
+            SoundManager.GetInstance().PlaySingleSounds("PlayerDeath");
+            Debug.Log("Sound:  Player Death"); 
                 state = BattleState.Lost;
 
             EndBattle(); 
