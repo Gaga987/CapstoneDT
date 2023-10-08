@@ -314,6 +314,7 @@ public class BattleSystem : MonoBehaviour
             StopCoroutine(PlayerRecover());
 
         // INCREASE  BUFF BASED ON BOSS IN PREFABS 
+     
         SoundManager.GetInstance().PlaySingleSounds("EnemyAttack");
         Debug.Log("Sound : EnemyAttack");
         shitTalkinText.text = bossC.combatantName + " strikes with a rageful glory! ";
@@ -335,8 +336,10 @@ public class BattleSystem : MonoBehaviour
 
             if(isDead)
             {
+            // 
             SoundManager.GetInstance().PlaySingleSounds("PlayerDeath");
             Debug.Log("Sound:  Player Death"); 
+
                 state = BattleState.Lost;
 
             EndBattle(); 
