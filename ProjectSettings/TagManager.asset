@@ -13,11 +13,12 @@ TagManager:
   - Sound
   - FIGHTA
   - FIGHTB
+  - ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - groundLayer
   - Water
   - UI
   - 

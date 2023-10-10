@@ -37,6 +37,12 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //public void EnterNextFight()
+    //{
+    //    Debug.Log(" Round 2 - fight!");
+    //    SceneManager.LoadScene("SceneThree");
+    //}
+
     public void EnterWinningMoment()
     {
         SceneManager.LoadScene(SceneCollection.AHappyEnding.ToString());
@@ -70,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadFightB()
     {
-        SceneManager.LoadScene(SceneCollection.SecondFight.ToString());  
+        SceneManager.LoadScene(SceneCollection.FightB.ToString());  
     }
 
 
@@ -92,7 +98,7 @@ public enum SceneCollection
     StartMenu,  //0
     QuestBegins,  //1
     FightA,   //2
-    SecondFight,  //3
+    FightB,  //3
     AHappyEnding,  //4 
     Loser  //5 
 }

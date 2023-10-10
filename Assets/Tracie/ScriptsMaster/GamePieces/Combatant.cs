@@ -2,12 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-/// <summary>
-///  REFACTORING
-/// scriptable objs for enemies - 
-/// combatant fed scriptable and modified 
-///  
-/// </summary>
+
 public class Combatant : MonoBehaviour
 {
     [Header("CombatantConfigurations")]

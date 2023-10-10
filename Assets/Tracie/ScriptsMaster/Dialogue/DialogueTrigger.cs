@@ -14,8 +14,8 @@ public class DialogueTrigger : MonoBehaviour
 
 
     private bool playerInRange;
+    private KeyCode interactKey = KeyCode.I;
 
-    private KeyCode interactKey = KeyCode.I; 
 
     private void Awake()
     {
@@ -53,10 +53,8 @@ public class DialogueTrigger : MonoBehaviour
         {
             visualCue.SetActive(true);
             // exhibit a 
-
-        //    if(Input.GetKeyDown(interactKey))
-        if(/*Interactor.GetInstance().isInteractPressed &&*/ Input.GetKeyDown(interactKey))
-     
+            if(Input.GetKeyDown(interactKey))
+                // REFERENCE ISSUE exhbit 0 -  if(Interactor.GetInstance().GetInteractPressed())
                 {
                 //   Debug.Log(inkJSON.text);  refactored to no longer include debug and instead reference the DM 
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);

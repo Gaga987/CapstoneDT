@@ -5,7 +5,6 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems; 
 using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 /// <summary>
 /// tt : 
 /// inkJSON files are sent to the Dialogue Manager which then 
@@ -43,19 +42,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText; 
     private Story currentStory;
-    private float waitFor = .2f;
+    private float waitFor = 0.2f;
 
-    [Header("Parameters Configurations")]
-    [SerializeField] private float typingSpeed = .04f;
-
-
-    private DialogueVariables dialogueVariables;
-    private Coroutine displayLineCoroutine; 
+    private DialogueVariables dialogueVariables; 
     // readonly
     public bool dialogueIsPlaying { get; private set; }
-    private bool canContinueToNextLine = false; 
 
- 
+    private KeyCode talkKey = KeyCode.T; 
     private void Start()
     {
         dialogueIsPlaying = false;
@@ -72,11 +65,9 @@ public class DialogueManager : MonoBehaviour
             return; 
         }
         // handle continuing to the next line in the dialogue when submit is pressed 
-        // exhibit b 
-        //double check  prevents the story from continuing if there are choices 
-        if (canContinueToNextLine && 
-            currentStory.currentChoices.Count == 0
-            && Input.GetKeyDown(KeyCode.T))
+       // exhibit b 
+       //double check  prevents the story from continuing if there are choices 
+        if( currentStory.currentChoices.Count == 0 && Input.GetKeyDown(talkKey))
         {
             ContinueStory(); 
         }
@@ -119,21 +110,14 @@ public class DialogueManager : MonoBehaviour
         // always returns false if there are choices but havent been selected 
         if (currentStory.canContinue)
         {
-            //guard clause to set text for the current dialogue line 
-            if (displayLineCoroutine != null)
-            {
-                StopCoroutine(displayLineCoroutine); 
-            }
-           displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue())); 
-            // CHANGING TO IEN 4 TYPING EFFECT 
+            
             // somewhat like popping a line out of a stack, settting the text for the current dialogue line
-            //dialogueText.text = currentStory.Continue();
-            // CHANGING TO IEN  4 TYPING EFFECT 
-       
+            dialogueText.text = currentStory.Continue();
+            // display choices, if any for this dialogue line
+            DisplayChoices(); 
         }
         else
         {
-
             StartCoroutine(ExitDialogueMode()); 
         }
     }
@@ -185,50 +169,15 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(SelectFirstChoice());
     }
 
-    private void HideChoices()
-    {
-        foreach (GameObject choice in choices)
-        {
-            choice.SetActive(false);
-        }
-    }
-
-
-    /// <summary>
-    ///  setting the first selected choice using a coroutine 
-    ///event system requires we clear first, then wait for at least once frame
-   /// before we set the current selected object. 
-   /// </summary>
-   /// <returns></returns>
-    private IEnumerator SelectFirstChoice()
+    // setting the first selected choice using a coroutine 
+    //event system requires we clear first, then wait for at least once frame 
+    // before we set the current selected object. 
+     private IEnumerator SelectFirstChoice()
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(choices[0].gameObject); 
     }
-
-
-    private IEnumerator DisplayLine(string line)
-    {
-
-        // clear the dialogue text for the next line 
-        dialogueText.text = "  ";
-        canContinueToNextLine = false;
-        HideChoices(); 
-        // display each letter one by one by turning our string into a character array 
-        foreach (char letter in line.ToCharArray())
-        {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed); 
-        }
-        canContinueToNextLine = true;
-        // display choices, if any for this dialogue line
-        DisplayChoices();
-    }
-
-    
-
-
 
     /// <summary>
     /// tt: on click function enabling player to make choices 
@@ -236,13 +185,9 @@ public class DialogueManager : MonoBehaviour
     /// <param name="choiceIndex"></param>
     public void MakeChoice( int choiceIndex)
     {
-        if (canContinueToNextLine)
-        {
-            currentStory.ChooseChoiceIndex(choiceIndex);
-            // shouldnt need register on submit 
-            ContinueStory();
-        }
-    
+        currentStory.ChooseChoiceIndex(choiceIndex); 
+        // shouldnt need register on submit 
+        ContinueStory();
     }
 
     public Ink.Runtime.Object GetVariableState(string variableName)

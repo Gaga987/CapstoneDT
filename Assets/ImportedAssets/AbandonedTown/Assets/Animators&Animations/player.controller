@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Death
+  m_Name: Die
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -102,6 +102,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: speed
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -131,6 +137,12 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: run
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: xVelocity
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102070544235359490}
@@ -190,6 +202,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: inAir
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102070544235359490}
@@ -306,6 +321,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: inAir
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102070544235359490}
   m_Solo: 0
@@ -414,6 +432,9 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: run
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102070544235359490}
@@ -555,6 +576,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: inAir
     m_EventTreshold: 0
+  - m_ConditionMode: 4
+    m_ConditionEvent: speed
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102313780858790462}
   m_Solo: 0
@@ -667,6 +691,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: run
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: speed
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102070544235359490}
   m_Solo: 0
@@ -720,7 +747,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: stand
-  m_Speed: 0
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101295746642523312}
@@ -737,7 +764,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d71a1d39f72eabb428bbe1e314a75079, type: 2}
+  m_Motion: {fileID: 7400000, guid: b6a89ef3a0ded714fad0a49e4b7a14d9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -871,22 +898,22 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102313780858790462}
-    m_Position: {x: 180, y: 40, z: 0}
+    m_Position: {x: 290, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102070544235359490}
-    m_Position: {x: 288, y: 144, z: 0}
+    m_Position: {x: 200, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102478502188664496}
-    m_Position: {x: 624, y: 132, z: 0}
+    m_Position: {x: 690, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102983409293940186}
-    m_Position: {x: 768, y: 12, z: 0}
+    m_Position: {x: 840, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102529902887141664}
-    m_Position: {x: 492, y: -144, z: 0}
+    m_Position: {x: 490, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102353915480269050}
-    m_Position: {x: 840, y: -132, z: 0}
+    m_Position: {x: 840, y: -130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4000730756132567250}
     m_Position: {x: 170, y: -140, z: 0}

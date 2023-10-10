@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        if (Input.GetButtonDown("jump") && !isJumping)
         {
             playerRB.velocity = new Vector2(playerRB.velocity.x, jumpPower);
             isJumping = true;
@@ -66,13 +66,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void FreezePlayerMovementDuringDialogue()
     {
-    //    if (DialogueManager.GetInstance().dialogueIsPlaying)
-    //    {
-    //        return;
-    //    }
+       if (DialogueManager.GetInstance().dialogueIsPlaying)
+       {
+            return;
+       }
     }
 
 
 
 
 }
+ 
