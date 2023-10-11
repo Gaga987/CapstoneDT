@@ -81,10 +81,6 @@ public class BattleSystem : MonoBehaviour
 
         // NEED: One shot audio for boss arrival // battle initalization 
 
-        // DRAGANA 
-       
-        
-
 
 
         // setup panels 
@@ -143,9 +139,6 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(PlayerStrongAttack()); 
         // NEED : One shot audio for strong attack 
 
-
-        // DRAGANA 
-        Debug.Log(" Dragana  strong attack animationsss");
     }
 
 
@@ -175,10 +168,6 @@ public class BattleSystem : MonoBehaviour
     
 
 
-
-
-
-
     /// <summary>
     /// tt : handles attack
     /// </summary>
@@ -195,9 +184,6 @@ public class BattleSystem : MonoBehaviour
         shitTalkinText.text = bossC.combatantName + " has been Felled! "  ;
 
 
-
-        // DRAGANA 
-        Debug.Log(" Dragana player deals damage animationsss");
 
         yield return new WaitForSeconds(preventPlayerAction);
 
@@ -293,7 +279,6 @@ public class BattleSystem : MonoBehaviour
         }
 
     }
-
 
 
     /// <summary>
