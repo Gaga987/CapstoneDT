@@ -19,12 +19,20 @@ public class GameManager : MonoBehaviour
         return instance; 
     }
 
+
+
+
+
+
     /// <summary>
     ///  Loads StartMenu from any onclick
     /// </summary>
     public void LoadStartMenu()
     {
+        SoundManager.GetInstance().PlayTheme("StartingSound");
+        Debug.Log("Audio Manager :  " + SoundManager.GetInstance().themeSound.ToString() + "Playing Confirmed");
         SceneManager.LoadScene(SceneCollection.StartMenu.ToString());
+   
     }
 
     /// <summary>
@@ -33,7 +41,10 @@ public class GameManager : MonoBehaviour
     public void LoadNewGame()
     {
         SceneManager.LoadScene(SceneCollection.QuestBegins.ToString());
-        Debug.Log("Entering the game, the story begins.");
+      //  SoundManager.GetInstance().StopSound("StartingSound");
+        //Debug.Log(" start sound has stopped"); 
+       SoundManager.GetInstance().PlayTheme("QuestSound");
+        Debug.Log("playing QUEST  sound, Entering the game, the story begins.");
     }
 
 
@@ -51,7 +62,9 @@ public class GameManager : MonoBehaviour
 
     public void LosingLost()
     {
-        SceneManager.LoadScene(SceneCollection.Loser.ToString()); 
+        SceneManager.LoadScene(SceneCollection.Loser.ToString());
+        SoundManager.GetInstance().PlayTheme("LosingTheme");
+        Debug.Log("Sound : losing AND i am sorry youve lost. better luck next time"); 
     }
 
     public void LoadScene( Scene scene)

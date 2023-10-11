@@ -37,7 +37,7 @@ public class BattleSystem : MonoBehaviour
     private float preventPlayerAction = 6f;
     private float inbetweenWaiting = 10f; 
     private int recoverAmount = 8;
-    private bool BossAttack = false;
+    private bool BossAttack = true;
     
 
 
@@ -213,8 +213,7 @@ public class BattleSystem : MonoBehaviour
         {
             //  if !isDead then  enemy turn 
             state = BattleState.EnemyTurn;
-            StartCoroutine(EnemyTurn());
-            animator.SetTrigger("isDead");
+            StartCoroutine(EnemyTurn()); 
         }
     }
 
