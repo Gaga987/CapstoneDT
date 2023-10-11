@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatantName: Lemon, Sloth of Lime
   combatantLevel: 4
-  damage: 12
+  damage: 14
   strongAttackDamage: 80
   maxHP: 150
   currentHP: 150
